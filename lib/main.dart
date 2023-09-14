@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mcbp_practicum/login_screen.dart';
+import 'package:mcbp_practicum/signup_screen.dart';
 import 'package:mcbp_practicum/utils/routes.dart';
 
+import 'dashboard_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,12 +17,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: LoginScreen(),
       routes: {
         //MyRoutes.homepage: (Context) => LoginPage(),
-        MyRoutes.lognipage: (Context) => LoginPage(),
-
-
+        MyRoutes.lognipage: (Context) => LoginScreen(),
+        MyRoutes.dashboard: (Context) => DashboardScreen(),
+        MyRoutes.singup: (Context) => SingupScreen(),
       },
     );
   }
