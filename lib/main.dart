@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mcbp_practicum/login_screen.dart';
+import 'package:mcbp_practicum/relative_screens/administrator.dart';
+import 'package:mcbp_practicum/relative_screens/application.dart';
+import 'package:mcbp_practicum/relative_screens/final_selection.dart';
+import 'package:mcbp_practicum/relative_screens/report.dart';
 import 'package:mcbp_practicum/signup_screen.dart';
 import 'package:mcbp_practicum/utils/routes.dart';
 
@@ -19,10 +23,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
       routes: {
-        //MyRoutes.homepage: (Context) => LoginPage(),
+
         MyRoutes.lognipage: (Context) => LoginScreen(),
         MyRoutes.dashboard: (Context) => DashboardScreen(),
         MyRoutes.singup: (Context) => SingupScreen(),
+        MyRoutes.administrator: (Context) => Admin(),
+        MyRoutes.final_selection: (Context) => FinalSelection(),
+        MyRoutes.report: (Context) => Report(),
+        MyRoutes.application: (Context) => Application(),
+
+
+
+
+
       },
     );
   }
