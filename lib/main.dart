@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mcbp_practicum/login_screen.dart';
-import 'package:mcbp_practicum/relative_screens/administrator.dart';
-import 'package:mcbp_practicum/relative_screens/application.dart';
-import 'package:mcbp_practicum/relative_screens/final_selection.dart';
-import 'package:mcbp_practicum/relative_screens/report.dart';
+import 'package:mcbp_practicum/userpages/administrator.dart';
+import 'package:mcbp_practicum/userpages/application.dart';
+import 'package:mcbp_practicum/userpages/final_selection.dart';
+import 'package:mcbp_practicum/userpages/report.dart';
 import 'package:mcbp_practicum/signup_screen.dart';
 import 'package:mcbp_practicum/utils/routes.dart';
 

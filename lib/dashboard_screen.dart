@@ -22,16 +22,23 @@ class DashboardScreen extends StatelessWidget {
 
 
       SingleChildScrollView(
-        child: Container(
-          alignment: Alignment.topCenter,
-          child: Container(
-            width: MediaQuery.of(context).size.width / 2, // Adjust the width as needed
-            child: PieChart(
-              dataMap: dataMap,
-              chartRadius: MediaQuery.of(context).size.width / 1.2,
-            ),
-          ),
-          ),
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.topCenter,
+              child: Container(
+                width: MediaQuery.of(context).size.width / 2, // Adjust the width as needed
+                child: PieChart(
+                  dataMap: dataMap,
+                  chartRadius: MediaQuery.of(context).size.width / 1.2,
+                ),
+              ),
+              ),
+
+
+          ],
+        ),
+
 
 
       ),
