@@ -41,6 +41,14 @@ class _ApplicationState extends State<Application> {
                 color: Colors.black87,
               ),
             ),
+            Text(
+              "ব্যক্তিগত তথ্য",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
             Padding(
               padding:
               const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
@@ -368,7 +376,7 @@ class _ApplicationState extends State<Application> {
                     // value: selectedOption,
                     onChanged: (value) {
                       setState(() {
-                        selectedOption = value.toString();
+                        selectedOption  = value.toString();
                       });
                     },
                     items: options.map((option) {
@@ -535,6 +543,490 @@ class _ApplicationState extends State<Application> {
             SizedBox(
               height: 40,
             ),
+            Text(
+              "বর্তমান ঠিকানা",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "বিভাগ",
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "জেলা",
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "উপজেলা",
+                ),
+              ),
+            ),SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "উইনিয়ন",
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "ওয়ার্ড নং",
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "গ্রাম",
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "পোস্ট কোড",
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "রাস্তা/ব্লক/সেক্টর",
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "বৈবাহিক তথ্য",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Text(
+              "স্বাস্থ্যগত তথ্য",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "গর্ভধারণ ক্রম",
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "গর্ভধারণ সময়কাল(সপ্তাহ)",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 40.0,
+            ),
+            Text(
+              "পেমেন্টের তথ্য",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "পেমেন্টের ধরন",
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "হিসাবের নাম",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
+              width: 300,
+              child: TextFormField(
+                //  controller: _confirmpasswordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  suffixIcon: DropdownButton<String>(
+
+                    // value: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value.toString();
+                      });
+                    },
+                    items: options.map((option) {
+                      return DropdownMenuItem<String>(
+                        value: option,
+                        child: Text(option),
+                      );
+                    }).toList(),
+                  ),
+
+
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "--বেছে নিন--",
+                  labelText: "হিসাব নং",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 60.0,
+            ),
+
             Container(
               alignment: Alignment.center,
 
@@ -546,7 +1038,7 @@ class _ApplicationState extends State<Application> {
                     MyRoutes.lognipage,
                   );
                 }  ,
-                child:Text('খুঁজুন'),
+                child:Text('সংরক্ষন করুন'),
 
 
                 style: ElevatedButton.styleFrom(
@@ -558,6 +1050,11 @@ class _ApplicationState extends State<Application> {
 
               ),
             ),
+
+            SizedBox(
+              height: 100,
+            ),
+
           ],
 
         )
