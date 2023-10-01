@@ -23,6 +23,7 @@ class _ApplicationState extends State<Application> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white30,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -64,7 +65,7 @@ class _ApplicationState extends State<Application> {
                 // controller: _firstnameController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "জাতীয় পরিচয় পত্র নং দিন",
@@ -102,7 +103,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: " জন্ম তারিখ ",
@@ -143,7 +144,7 @@ class _ApplicationState extends State<Application> {
 
                      */
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "নাম (বাংলা)",
@@ -179,7 +180,7 @@ class _ApplicationState extends State<Application> {
 
      */
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "সনাম (ইংরেজি)",
@@ -214,7 +215,7 @@ class _ApplicationState extends State<Application> {
 
      */
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "িতার নাম",
@@ -249,7 +250,7 @@ class _ApplicationState extends State<Application> {
 
      */
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "মাতার নাম",
@@ -284,7 +285,7 @@ class _ApplicationState extends State<Application> {
 
      */
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "পস্বামীর নাম",
@@ -319,7 +320,7 @@ class _ApplicationState extends State<Application> {
 
      */
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "যে নামে পরিচিত",
@@ -354,7 +355,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -389,7 +390,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -424,7 +425,7 @@ class _ApplicationState extends State<Application> {
 
      */
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -459,7 +460,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -494,7 +495,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -529,7 +530,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -575,7 +576,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -607,7 +608,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -639,7 +640,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -670,7 +671,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -702,7 +703,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -734,7 +735,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -766,7 +767,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -798,7 +799,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -830,7 +831,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -873,7 +874,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -905,7 +906,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -948,7 +949,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -980,7 +981,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",
@@ -1015,7 +1016,7 @@ class _ApplicationState extends State<Application> {
 
 
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
                   hintText: "--বেছে নিন--",

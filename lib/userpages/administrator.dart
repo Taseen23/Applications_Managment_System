@@ -28,6 +28,17 @@ class _AdminState extends State<Admin> {
       body:
       SingleChildScrollView(
           child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFF7ebcd9),
+                      Color(0xFFbb9af5),
+
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  )
+              ),
           child: Center(
               child:
 
