@@ -14,10 +14,10 @@ class _AdminState extends State<Admin> {
 
   late String selectedOption;
 
-  final List<String> options = ['মন্ত্রণালয়', 'পরিচালক দপ্তর', 'অন্যান্য', ];
-  final List<String> options1 = ['মন্ত্রণালয়', 'পরিচালক দপ্তর', 'অন্যান্য', ];
-  final List<String> options2 = ['মন্ত্রণালয়', 'পরিচালক দপ্তর', 'অন্যান্য', ];
-  final List<String> options3 = ['মন্ত্রণালয়', 'পরিচালক দপ্তর', 'অন্যান্য', ];
+  final List<String> options = ['LMA', 'MCBP', 'অন্যান্য', ];
+  final List<String> options1 = ['ব্যবহারকারীর ধরণ','মন্ত্রণালয়', 'পরিচালক দপ্তর', 'অন্যান্য', ];
+  final List<String> options2 = ['সক্রিয়','নিসক্রিয়', 'পাসওয়ার্ড', ];
+  final List<String> options3 = ['এডমিন', ];
 
   TextEditingController textEditingController = TextEditingController();
   @override
@@ -91,9 +91,9 @@ class _AdminState extends State<Admin> {
                             suffixIcon: DropdownButton<String>(
 
                               // value: selectedOption,
-                              onChanged: (value) {
+                              onChanged: (String? newValue) {
                                 setState(() {
-                                  selectedOption = value.toString();
+                                  selectedOption = newValue!;
                                 });
                               },
                               items: options.map((option) {
@@ -126,7 +126,13 @@ class _AdminState extends State<Admin> {
                         //  controller: _emailController,
 
                         decoration: InputDecoration(
-                          suffixIcon: DropdownButton<String>(
+                          suffixIcon: DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                //borderRadius: BorderRadius.circular(10)
+                              )
+                            ),
 
                             // value: selectedOption,
                             onChanged: (value) {
@@ -134,10 +140,10 @@ class _AdminState extends State<Admin> {
                                 selectedOption = value.toString();
                               });
                             },
-                            items: options.map((option) {
-                              return DropdownMenuItem<String>(
-                                value: option,
-                                child: Text(option),
+                            items: options1.map((e) {
+                              return DropdownMenuItem(
+                                value: e,
+                                child: Text(e),
                               );
                             }).toList(),
                           ),
@@ -168,7 +174,7 @@ class _AdminState extends State<Admin> {
                                 selectedOption = value.toString();
                               });
                             },
-                            items: options.map((option) {
+                            items: options2.map((option) {
                               return DropdownMenuItem<String>(
                                 value: option,
                                 child: Text(option),
@@ -201,7 +207,7 @@ class _AdminState extends State<Admin> {
                                 selectedOption = value.toString();
                               });
                             },
-                            items: options.map((option) {
+                            items: options3.map((option) {
                               return DropdownMenuItem<String>(
                                 value: option,
                                 child: Text(option),
