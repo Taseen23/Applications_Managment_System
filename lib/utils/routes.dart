@@ -6,6 +6,7 @@ class MyRoutes {
   static String application = "/application";
   static String final_selection = "/final_selection";
   static String report = "/report";
+  static String triggerpage = "/triggerpage";
 
 
 

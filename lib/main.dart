@@ -7,6 +7,7 @@ import 'package:mcbp_practicum/userpages/report.dart';
 import 'package:mcbp_practicum/signup_screen.dart';
 import 'package:mcbp_practicum/utils/routes.dart';
 
+import 'adminpages/triggerpage.dart';
 import 'dashboard_screen.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: triggerScreen(),
       routes: {
 
         MyRoutes.lognipage: (Context) => LoginScreen(),
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.final_selection: (Context) => FinalSelection(),
         MyRoutes.report: (Context) => Report(),
         MyRoutes.application: (Context) => Application(),
+        MyRoutes.triggerpage: (Context) => triggerScreen(),
 
 
 
