@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "797924738770",
+    "project_id": "mcbp-practicum",
+    "storage_bucket": "mcbp-practicum.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797924738770:android:13df8a7365112738dccf0b",
+        "android_client_info": {
+          "package_name": "com.example.mcbp_practicum"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJrJ8tZ8DpDD8Zbs60sDGEaGprfnY_wsQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
