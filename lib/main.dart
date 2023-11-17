@@ -11,8 +11,9 @@ import 'package:mcbp_practicum/utils/routes.dart';
 import 'adminpages/triggerpage.dart';
 import 'dashboard_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
@@ -36,9 +37,6 @@ class MyApp extends StatelessWidget {
         MyRoutes.report: (Context) => Report(),
         MyRoutes.application: (Context) => Application(),
         MyRoutes.triggerpage: (Context) => triggerScreen(),
-
-
-
 
 
       },
