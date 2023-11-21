@@ -13,8 +13,12 @@ import 'dashboard_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+          apiKey: "AIzaSyAJrJ8tZ8DpDD8Zbs60sDGEaGprfnY_wsQ",
+          appId: "1:797924738770:android:13df8a7365112738dccf0b",
+          messagingSenderId: "797924738770",
+          projectId: "mcbp-practicum"));
   runApp(const MyApp());
 }
 
@@ -28,7 +32,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: triggerScreen(),
       routes: {
-
         MyRoutes.lognipage: (Context) => LoginScreen(),
         MyRoutes.dashboard: (Context) => DashboardScreen(),
         MyRoutes.singup: (Context) => SingupScreen(),
@@ -37,10 +40,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.report: (Context) => Report(),
         MyRoutes.application: (Context) => Application(),
         MyRoutes.triggerpage: (Context) => triggerScreen(),
-
-
       },
     );
   }
 }
-

@@ -11,4 +11,5 @@ class DatabaseMetgods {
         .doc()
         .set(userinfoMap);
   }
+
 }

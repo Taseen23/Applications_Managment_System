@@ -1,4 +1,5 @@
 //import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -143,6 +144,7 @@ class MyDrawer extends StatelessWidget {
             ),
             title: InkWell(
               onTap: () async {
+                FirebaseAuth.instance.signOut();
                 await Future.delayed(Duration(seconds: 0));
                 Navigator.pushNamed(context, MyRoutes.lognipage);
               },

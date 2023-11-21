@@ -1,8 +1,43 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mcbp_practicum/Firebase_auth_implimentation/authentication.dart';
 import 'package:mcbp_practicum/utils/routes.dart';
 
-class SingupScreen extends StatelessWidget {
+class SingupScreen extends StatefulWidget {
   @override
+  State<SingupScreen> createState() => _SingupScreenState();
+}
+
+class _SingupScreenState extends State<SingupScreen> {
+
+  final FirebaseAuthService _auth = FirebaseAuthService() ;
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  @override
+
+  void dispose(){
+    super.dispose();
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
+  void signup() async{
+    String username= _usernameController.text;
+    String email= _emailController.text;
+    String password= _passwordController.text;
+    
+    User? user = await _auth.signUpWithEmailAndPassword(email, password);
+    if (user!= null){
+      print("User is succesfully created");
+      Navigator.pushNamed(context, MyRoutes.lognipage);
+
+    } else {
+      print("Some error happened");
+    }
+
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -48,7 +83,7 @@ class SingupScreen extends StatelessWidget {
                       child: TextFormField
                       //Padding(padding: Size.fromWidth(20), Size.fromHeight(30),
                         (
-                       // controller: _firstnameController,
+                        controller: _usernameController,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
@@ -82,7 +117,7 @@ class SingupScreen extends StatelessWidget {
                     SizedBox(
                       width: 300,
                       child: TextFormField(
-                      //  controller: _emailController,
+                        controller: _emailController,
 
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
@@ -100,7 +135,7 @@ class SingupScreen extends StatelessWidget {
                     SizedBox(
                       width: 300,
                       child: TextFormField(
-                     //   controller: _passwordController,
+                        controller: _passwordController,
 
                         obscureText: true,
                         decoration: InputDecoration(
@@ -139,12 +174,7 @@ class SingupScreen extends StatelessWidget {
                       child:
 
                       ElevatedButton(
-                        onPressed: () {
-                      Navigator.pushNamed(
-                      context,
-                      MyRoutes.lognipage,
-                      );
-                      }  ,
+                        onPressed: signup,
                         child:Text('Sign Up'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xffd97348),
