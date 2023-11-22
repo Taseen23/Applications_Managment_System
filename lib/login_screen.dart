@@ -97,11 +97,15 @@ class LoginPageState extends State<LoginScreen> {
                   },
 
                  */
+
+                    obscureText: true,
                     controller: _passwordController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.password),
                       hintText: "Enter Password",
                       labelText: "Password",
+                      suffixIcon: Icon(Icons.remove_red_eye_outlined)
+
                     ),
                     validator: (value) {
                       if (value == null) {

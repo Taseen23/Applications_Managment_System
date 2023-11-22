@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mcbp_practicum/database.dart';
 
 import '../utils/routes.dart';
 
@@ -11,6 +12,74 @@ class Application extends StatefulWidget {
 
 class _ApplicationState extends State<Application> {
 
+  uploaduserinfo() async{
+    Map<String, dynamic> uploaduserinfo={
+
+      "NID" : nidController.text,
+      "Date Of Birth": dobController.text,
+      "Name" : nameController.text,
+      "Father Name" : fathernameController.text,
+      "Mother Name" : mothernameController.text,
+      "Spouse Name": spousenameController.text,
+      "Applicant Nick Name": applicantnickController.text,
+      "Birth Place" : birthplaceController.text,
+      "Religion" : religionController.text,
+      "Mobile No" : mobilenoController.text,
+      "Education Level": educationlevelController.text,
+      "Blood Group" : bloodgroupController.text,
+      "Marital Info" : maritalinfoController.text,
+      "Divison" : divisionController.text,
+      "District" : districtController.text,
+      "Upalzila" : upazilaController.text,
+      "Union" : unionController.text,
+      "Ward No" : wardnoController.text,
+      "village" : villageController.text,
+      "Post Code" : postcodeController.text,
+      "Road/Block/Sector" : roadController.text,
+      "Marital Status" : maritalstatusController.text,
+      "Conception Term" : conceptionController.text,
+      "Conception Duration(Week)": conceptionController.text,
+      "Payment Mode": paymentmodeController.text,
+      "Account Name" : accountnameController.text,
+      "Account No" : accountnoController.text,
+
+
+
+    };
+    await DatabaseMetgods().addUserDetails(uploaduserinfo);
+  }
+
+
+
+  TextEditingController nidController = TextEditingController();
+  TextEditingController dobController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController fathernameController = TextEditingController();
+  TextEditingController mothernameController = TextEditingController();
+  TextEditingController spousenameController = TextEditingController();
+  TextEditingController applicantnickController = TextEditingController();
+  TextEditingController birthplaceController = TextEditingController();
+  TextEditingController religionController = TextEditingController();
+  TextEditingController mobilenoController = TextEditingController();
+  TextEditingController educationlevelController = TextEditingController();
+  TextEditingController bloodgroupController = TextEditingController();
+  TextEditingController maritalinfoController = TextEditingController();
+  TextEditingController divisionController = TextEditingController();
+  TextEditingController districtController = TextEditingController();
+  TextEditingController upazilaController = TextEditingController();
+  TextEditingController unionController = TextEditingController();
+  TextEditingController wardnoController = TextEditingController();
+  TextEditingController villageController = TextEditingController();
+  TextEditingController postcodeController = TextEditingController();
+  TextEditingController roadController = TextEditingController();
+  TextEditingController maritalstatusController = TextEditingController();
+  TextEditingController conceptionController = TextEditingController();
+  TextEditingController conceptiondurationController = TextEditingController();
+  TextEditingController paymentmodeController = TextEditingController();
+  TextEditingController accountnameController = TextEditingController();
+  TextEditingController accountnoController = TextEditingController();
+  /*
+
   late String selectedOption;
 
   final List<String> options = ['মন্ত্রণালয়', 'পরিচালক দপ্তর', 'অন্যান্য', ];
@@ -18,8 +87,10 @@ class _ApplicationState extends State<Application> {
   final List<String> options2 = ['মন্ত্রণালয়', 'পরিচালক দপ্তর', 'অন্যান্য', ];
   final List<String> options3 = ['মন্ত্রণালয়', 'পরিচালক দপ্তর', 'অন্যান্য', ];
 
+   */
 
-  TextEditingController textEditingController = TextEditingController();
+
+  //TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +106,7 @@ class _ApplicationState extends State<Application> {
             ),
 
             Text(
-              "আবেদনকারী ব্যবস্থাপনা",
+              "Applicant Management",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -43,7 +114,7 @@ class _ApplicationState extends State<Application> {
               ),
             ),
             Text(
-              "ব্যক্তিগত তথ্য",
+              "Personal Info",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -68,8 +139,8 @@ class _ApplicationState extends State<Application> {
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "জাতীয় পরিচয় পত্র নং দিন",
-                  labelText: "জাতীয় পরিচয় পত্র নং",
+                  hintText: "NID",
+                  labelText: "NID",
                 ),
               ),
             ),
@@ -81,23 +152,6 @@ class _ApplicationState extends State<Application> {
               child: TextFormField(
                 //  controller: _lastnameController,
                 decoration: InputDecoration(
-                  /*suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
 
 
 
@@ -106,52 +160,14 @@ class _ApplicationState extends State<Application> {
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: " জন্ম তারিখ ",
-                  labelText: "জন্ম তারিখ",
+                  hintText: " Date Of Birth ",
+                  labelText: "Date Of Birth ",
                 ),
               ),
             ),
             // SizedBox(width: 16),
 
-            SizedBox(
-              height: 20.0,
-            ),
 
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-
-                //  controller: _emailController,
-
-                decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                     */
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
-                  hintText: "নাম (বাংলা)",
-                  labelText: "নাম (বাংলা)",
-                ),
-              ),
-            ),
             SizedBox(
               height: 20.0,
             ),
@@ -183,8 +199,8 @@ class _ApplicationState extends State<Application> {
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "সনাম (ইংরেজি)",
-                  labelText: "সনাম (ইংরেজি)",
+                  hintText: "Name",
+                  labelText: "Name",
                 ),
               ),
             ),
@@ -218,8 +234,8 @@ class _ApplicationState extends State<Application> {
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "িতার নাম",
-                  labelText: "পিতার নাম",
+                  hintText: "Father Name",
+                  labelText: "Father Name",
                 ),
               ),
             ),
@@ -232,29 +248,13 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  /*  suffixIcon: DropdownButton<String>(
 
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-     */
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "মাতার নাম",
-                  labelText: "মাতার নাম",
+                  hintText: "Mother Name",
+                  labelText: "Mother Name",
                 ),
               ),
             ),
@@ -267,29 +267,13 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  /*  suffixIcon: DropdownButton<String>(
 
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-     */
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "পস্বামীর নাম",
-                  labelText: "পস্বামীর নাম",
+                  hintText: "Spouse Name",
+                  labelText: "Spouse Name",
                 ),
               ),
             ),
@@ -302,29 +286,13 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  /*  suffixIcon: DropdownButton<String>(
 
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-     */
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "যে নামে পরিচিত",
-                  labelText: "যে নামে পরিচিত",
+                  hintText: "Applicant Nick Name",
+                  labelText: "Applicant Nick Name",
                 ),
               ),
             ),
@@ -337,6 +305,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                     suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -353,13 +322,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "জন্মস্থান",
+                  hintText: "Birth Place",
+                  labelText: "Birth Place",
                 ),
               ),
             ),
@@ -372,6 +343,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                     suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -388,13 +360,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "ধর্ম",
+                  hintText: "Religion",
+                  labelText: "Religion",
                 ),
               ),
             ),
@@ -407,29 +381,13 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  /*  suffixIcon: DropdownButton<String>(
 
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-     */
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "মোবাইল নং",
+                  hintText: "Mobile No",
+                  labelText: "Mobile No",
                 ),
               ),
             ),
@@ -442,6 +400,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                     suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -458,13 +417,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "শিক্ষাগত যোগ্যতা",
+                  hintText: "Education Level",
+                  labelText: "Education Level",
                 ),
               ),
             ),
@@ -477,6 +438,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                     suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -493,13 +455,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "রক্তের গ্রুপ",
+                  hintText: "Blood Group",
+                  labelText: "Blood Group",
                 ),
               ),
             ),
@@ -512,6 +476,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                     suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -528,13 +493,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "বৈবাহিক তথ্য",
+                  hintText: "Marital Info",
+                  labelText: "Marital Info",
                 ),
               ),
             ),
@@ -545,7 +512,7 @@ class _ApplicationState extends State<Application> {
               height: 40,
             ),
             Text(
-              "বর্তমান ঠিকানা",
+              "Present Address",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -558,6 +525,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -574,13 +542,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "বিভাগ",
+                  hintText: "Division",
+                  labelText: "Division",
                 ),
               ),
             ),
@@ -590,6 +560,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -606,13 +577,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "জেলা",
+                  hintText: "District",
+                  labelText: "District",
                 ),
               ),
             ),
@@ -622,6 +595,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -638,13 +612,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "উপজেলা",
+                  hintText: "Upazila",
+                  labelText: "Upazila",
                 ),
               ),
             ),SizedBox(
@@ -653,6 +629,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -669,13 +646,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "উইনিয়ন",
+                  hintText: "Union",
+                  labelText: "Union",
                 ),
               ),
             ),
@@ -685,6 +664,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -701,13 +681,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "ওয়ার্ড নং",
+                  hintText: "Ward No",
+                  labelText: "Ward No",
                 ),
               ),
             ),
@@ -717,6 +699,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -733,13 +716,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "গ্রাম",
+                  hintText: "Village",
+                  labelText: "Village",
                 ),
               ),
             ),
@@ -749,6 +734,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -765,13 +751,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "পোস্ট কোড",
+                  hintText: "Post Code",
+                  labelText: "Post Code",
                 ),
               ),
             ),
@@ -781,6 +769,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -797,13 +786,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "রাস্তা/ব্লক/সেক্টর",
+                  hintText: "Road/Block/Sector",
+                  labelText: "Road/Block/Sector",
                 ),
               ),
             ),
@@ -813,6 +804,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -829,13 +821,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "বৈবাহিক তথ্য",
+                  hintText: "Marital Status",
+                  labelText: "Marital Status",
                 ),
               ),
             ),
@@ -843,7 +837,7 @@ class _ApplicationState extends State<Application> {
               height: 20.0,
             ),
             Text(
-              "স্বাস্থ্যগত তথ্য",
+              "Health Status",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -856,6 +850,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -872,13 +867,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "গর্ভধারণ ক্রম",
+                  hintText: "Conception Term",
+                  labelText: "Conception Term",
                 ),
               ),
             ),
@@ -888,6 +885,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -904,13 +902,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "গর্ভধারণ সময়কাল(সপ্তাহ)",
+                  hintText: "Conception Duration(Week) ",
+                  labelText: "Conception Duration(Week) ",
                 ),
               ),
             ),
@@ -918,7 +918,7 @@ class _ApplicationState extends State<Application> {
               height: 40.0,
             ),
             Text(
-              "পেমেন্টের তথ্য",
+              "Payment Details",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -931,6 +931,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -947,13 +948,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "পেমেন্টের ধরন",
+                  hintText: "Payment Mode",
+                  labelText: "Payment Mode",
                 ),
               ),
             ),
@@ -963,6 +966,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -979,13 +983,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "হিসাবের নাম",
+                  hintText: "Account Name",
+                  labelText: "Account Name",
                 ),
               ),
             ),
@@ -998,6 +1004,7 @@ class _ApplicationState extends State<Application> {
                 //  controller: _confirmpasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  /*
                   suffixIcon: DropdownButton<String>(
 
                     // value: selectedOption,
@@ -1014,13 +1021,15 @@ class _ApplicationState extends State<Application> {
                     }).toList(),
                   ),
 
+                   */
+
 
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  hintText: "--বেছে নিন--",
-                  labelText: "হিসাব নং",
+                  hintText: "Account No",
+                  labelText: "Account No",
                 ),
               ),
             ),
@@ -1033,13 +1042,14 @@ class _ApplicationState extends State<Application> {
 
               child: ElevatedButton(
                 onPressed: () {
+                  uploaduserinfo();
 
                   Navigator.pushNamed(
                     context,
                     MyRoutes.lognipage,
                   );
                 }  ,
-                child:Text('সংরক্ষন করুন'),
+                child:Text('Submit'),
 
 
                 style: ElevatedButton.styleFrom(

@@ -14,6 +14,7 @@ class _SingupScreenState extends State<SingupScreen> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmpasswordController = TextEditingController();
   @override
 
   void dispose(){
@@ -26,10 +27,11 @@ class _SingupScreenState extends State<SingupScreen> {
     String username= _usernameController.text;
     String email= _emailController.text;
     String password= _passwordController.text;
+    String confirmpass = _confirmpasswordController.text;
     
     User? user = await _auth.signUpWithEmailAndPassword(email, password);
     if (user!= null){
-      print("User is succesfully created");
+      print("User is successfully created");
       Navigator.pushNamed(context, MyRoutes.lognipage);
 
     } else {
@@ -154,7 +156,7 @@ class _SingupScreenState extends State<SingupScreen> {
                     SizedBox(
                       width: 300,
                       child: TextFormField(
-                      //  controller: _confirmpasswordController,
+                        controller: _confirmpasswordController,
                         obscureText: true,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
