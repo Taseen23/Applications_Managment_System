@@ -4,52 +4,45 @@ import 'package:mcbp_practicum/database.dart';
 import '../utils/routes.dart';
 
 class Application extends StatefulWidget {
-
+  const Application({super.key});
 
   @override
   State<Application> createState() => _ApplicationState();
 }
 
 class _ApplicationState extends State<Application> {
-
-  uploaduserinfo() async{
-    Map<String, dynamic> uploaduserinfo={
-
-      "NID" : nidController.text,
+  uploaduserinfo() async {
+    Map<String, dynamic> uploaduserinfo = {
+      "NID": nidController.text,
       "Date Of Birth": dobController.text,
-      "Name" : nameController.text,
-      "Father Name" : fathernameController.text,
-      "Mother Name" : mothernameController.text,
+      "Name": nameController.text,
+      "Father Name": fathernameController.text,
+      "Mother Name": mothernameController.text,
       "Spouse Name": spousenameController.text,
       "Applicant Nick Name": applicantnickController.text,
-      "Birth Place" : birthplaceController.text,
-      "Religion" : religionController.text,
-      "Mobile No" : mobilenoController.text,
+      "Birth Place": birthplaceController.text,
+      "Religion": religionController.text,
+      "Mobile No": mobilenoController.text,
       "Education Level": educationlevelController.text,
-      "Blood Group" : bloodgroupController.text,
-      "Marital Info" : maritalinfoController.text,
-      "Divison" : divisionController.text,
-      "District" : districtController.text,
-      "Upalzila" : upazilaController.text,
-      "Union" : unionController.text,
-      "Ward No" : wardnoController.text,
-      "village" : villageController.text,
-      "Post Code" : postcodeController.text,
-      "Road/Block/Sector" : roadController.text,
-      "Marital Status" : maritalstatusController.text,
-      "Conception Term" : conceptionController.text,
+      "Blood Group": bloodgroupController.text,
+      "Marital Info": maritalinfoController.text,
+      "Divison": divisionController.text,
+      "District": districtController.text,
+      "Upalzila": upazilaController.text,
+      "Union": unionController.text,
+      "Ward No": wardnoController.text,
+      "village": villageController.text,
+      "Post Code": postcodeController.text,
+      "Road/Block/Sector": roadController.text,
+      "Marital Status": maritalstatusController.text,
+      "Conception Term": conceptionController.text,
       "Conception Duration(Week)": conceptionController.text,
       "Payment Mode": paymentmodeController.text,
-      "Account Name" : accountnameController.text,
-      "Account No" : accountnoController.text,
-
-
-
+      "Account Name": accountnameController.text,
+      "Account No": accountnoController.text,
     };
     await DatabaseMetgods().addUserDetails(uploaduserinfo);
   }
-
-
 
   TextEditingController nidController = TextEditingController();
   TextEditingController dobController = TextEditingController();
@@ -78,6 +71,7 @@ class _ApplicationState extends State<Application> {
   TextEditingController paymentmodeController = TextEditingController();
   TextEditingController accountnameController = TextEditingController();
   TextEditingController accountnoController = TextEditingController();
+
   /*
 
   late String selectedOption;
@@ -89,20 +83,20 @@ class _ApplicationState extends State<Application> {
 
    */
 
-
   //TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white30,
-      body: SingleChildScrollView(
-        child: Column(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+            child: Column(
           children: [
             SizedBox(
-              height: 100.0,
+              height: 60,
             ),
-            SizedBox(
-              height: 100.0,
+            Image.asset(
+              "assists/images/govlogo.png",
+              scale: 20,
             ),
 
             Text(
@@ -123,7 +117,7 @@ class _ApplicationState extends State<Application> {
             ),
             Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                  const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
             ),
             SizedBox(
               height: 20.0,
@@ -131,14 +125,13 @@ class _ApplicationState extends State<Application> {
             SizedBox(
               width: 300,
               child: TextFormField
-              //Padding(padding: Size.fromWidth(20), Size.fromHeight(30),
-                (
+                  //Padding(padding: Size.fromWidth(20), Size.fromHeight(30),
+                  (
                 // controller: _firstnameController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "NID",
                   labelText: "NID",
                 ),
@@ -152,21 +145,15 @@ class _ApplicationState extends State<Application> {
               child: TextFormField(
                 //  controller: _lastnameController,
                 decoration: InputDecoration(
-
-
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: " Date Of Birth ",
                   labelText: "Date Of Birth ",
                 ),
               ),
             ),
             // SizedBox(width: 16),
-
 
             SizedBox(
               height: 20.0,
@@ -176,29 +163,11 @@ class _ApplicationState extends State<Application> {
               child: TextFormField(
                 //   controller: _passwordController,
 
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-    /*suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-     */
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Name",
                   labelText: "Name",
                 ),
@@ -211,29 +180,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-    /*  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-     */
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Father Name",
                   labelText: "Father Name",
                 ),
@@ -246,13 +197,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Mother Name",
                   labelText: "Mother Name",
                 ),
@@ -265,13 +214,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Spouse Name",
                   labelText: "Spouse Name",
                 ),
@@ -284,13 +231,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Applicant Nick Name",
                   labelText: "Applicant Nick Name",
                 ),
@@ -303,32 +248,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                    suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Birth Place",
                   labelText: "Birth Place",
                 ),
@@ -341,32 +265,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                    suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption  = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Religion",
                   labelText: "Religion",
                 ),
@@ -379,13 +282,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Mobile No",
                   labelText: "Mobile No",
                 ),
@@ -398,32 +299,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                    suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Education Level",
                   labelText: "Education Level",
                 ),
@@ -436,32 +316,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                    suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Blood Group",
                   labelText: "Blood Group",
                 ),
@@ -474,32 +333,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                    suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Marital Info",
                   labelText: "Marital Info",
                 ),
@@ -520,318 +358,160 @@ class _ApplicationState extends State<Application> {
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Division",
                   labelText: "Division",
                 ),
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "District",
                   labelText: "District",
                 ),
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Upazila",
                   labelText: "Upazila",
                 ),
               ),
-            ),SizedBox(
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Union",
                   labelText: "Union",
                 ),
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Ward No",
                   labelText: "Ward No",
                 ),
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Village",
                   labelText: "Village",
                 ),
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Post Code",
                   labelText: "Post Code",
                 ),
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Road/Block/Sector",
                   labelText: "Road/Block/Sector",
                 ),
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Marital Status",
                   labelText: "Marital Status",
                 ),
               ),
+            ),
+            SizedBox(
+              height: 20.0,
             ),
             SizedBox(
               height: 20.0,
@@ -845,70 +525,34 @@ class _ApplicationState extends State<Application> {
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Conception Term",
                   labelText: "Conception Term",
                 ),
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Conception Duration(Week) ",
                   labelText: "Conception Duration(Week) ",
                 ),
@@ -926,70 +570,34 @@ class _ApplicationState extends State<Application> {
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Payment Mode",
                   labelText: "Payment Mode",
                 ),
               ),
             ),
             SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Account Name",
                   labelText: "Account Name",
                 ),
@@ -1002,32 +610,11 @@ class _ApplicationState extends State<Application> {
               width: 300,
               child: TextFormField(
                 //  controller: _confirmpasswordController,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
-                  /*
-                  suffixIcon: DropdownButton<String>(
-
-                    // value: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value.toString();
-                      });
-                    },
-                    items: options.map((option) {
-                      return DropdownMenuItem<String>(
-                        value: option,
-                        child: Text(option),
-                      );
-                    }).toList(),
-                  ),
-
-                   */
-
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   hintText: "Account No",
                   labelText: "Account No",
                 ),
@@ -1039,7 +626,6 @@ class _ApplicationState extends State<Application> {
 
             Container(
               alignment: Alignment.center,
-
               child: ElevatedButton(
                 onPressed: () {
                   uploaduserinfo();
@@ -1048,29 +634,20 @@ class _ApplicationState extends State<Application> {
                     context,
                     MyRoutes.lognipage,
                   );
-                }  ,
-                child:Text('Submit'),
-
-
+                },
+                child: Text('Submit'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xffd97348),
 
                   //Color(0xffeb6f1c),
-
                 ),
-
               ),
             ),
 
             SizedBox(
               height: 100,
             ),
-
           ],
-
-        )
-      )
-
-    );
+        )));
   }
 }
