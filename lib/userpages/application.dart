@@ -13,8 +13,8 @@ class Application extends StatefulWidget {
 class _ApplicationState extends State<Application> {
   uploaduserinfo() async {
     Map<String, dynamic> uploaduserinfo = {
-      "NID": nidController.text,
-      "Date Of Birth": dobController.text,
+      "NID": nidController.text.trim(),
+      "Date Of Birth": dobController.text.trim(),
       "Name": nameController.text,
       "Father Name": fathernameController.text,
       "Mother Name": mothernameController.text,
@@ -88,566 +88,593 @@ class _ApplicationState extends State<Application> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
+        appBar: AppBar(
+      title: Text(
+      "MCBP",
+    ),
+    centerTitle: true,
+    ),
         body: SingleChildScrollView(
             child: Column(
-          children: [
-            SizedBox(
-              height: 60,
-            ),
-            Image.asset(
-              "assists/images/govlogo.png",
-              scale: 20,
-            ),
+              children: [
+                SizedBox(
+                  height: 60,
+                ),
+                Image.asset(
+                  "assists/images/govlogo.png",
+                  scale: 20,
+                ),
 
-            Text(
-              "Applicant Management",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-            ),
-            Text(
-              "Personal Info",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            Padding(
-              padding:
+                Text(
+                  "Applicant Management",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+                Text(
+                  "Personal Info",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
+                ),
+                Padding(
+                  padding:
                   const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField
                   //Padding(padding: Size.fromWidth(20), Size.fromHeight(30),
-                  (
-                // controller: _firstnameController,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "NID",
-                  labelText: "NID",
+                    (
+                    controller: nidController,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "NID",
+                      labelText: "NID",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _lastnameController,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: " Date Of Birth ",
-                  labelText: "Date Of Birth ",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            // SizedBox(width: 16),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: dobController,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: " Date Of Birth ",
+                      labelText: "Date Of Birth ",
+                    ),
+                  ),
+                ),
+                // SizedBox(width: 16),
 
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //   controller: _passwordController,
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                      controller: nameController,
 
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Name",
-                  labelText: "Name",
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Name",
+                      labelText: "Name",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Father Name",
-                  labelText: "Father Name",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Mother Name",
-                  labelText: "Mother Name",
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: fathernameController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Father Name",
+                      labelText: "Father Name",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Spouse Name",
-                  labelText: "Spouse Name",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Applicant Nick Name",
-                  labelText: "Applicant Nick Name",
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                      controller: mothernameController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Mother Name",
+                      labelText: "Mother Name",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Birth Place",
-                  labelText: "Birth Place",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Religion",
-                  labelText: "Religion",
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: spousenameController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Spouse Name",
+                      labelText: "Spouse Name",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Mobile No",
-                  labelText: "Mobile No",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Education Level",
-                  labelText: "Education Level",
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                   controller: applicantnickController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Applicant Nick Name",
+                      labelText: "Applicant Nick Name",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Blood Group",
-                  labelText: "Blood Group",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Marital Info",
-                  labelText: "Marital Info",
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: birthplaceController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Birth Place",
+                      labelText: "Birth Place",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Text(
-              "Present Address",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Division",
-                  labelText: "Division",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "District",
-                  labelText: "District",
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                     controller: religionController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Religion",
+                      labelText: "Religion",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Upazila",
-                  labelText: "Upazila",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Union",
-                  labelText: "Union",
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                     controller: mobilenoController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Mobile No",
+                      labelText: "Mobile No",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Ward No",
-                  labelText: "Ward No",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Village",
-                  labelText: "Village",
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                   controller: educationlevelController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Education Level",
+                      labelText: "Education Level",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Post Code",
-                  labelText: "Post Code",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Road/Block/Sector",
-                  labelText: "Road/Block/Sector",
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: bloodgroupController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Blood Group",
+                      labelText: "Blood Group",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Marital Status",
-                  labelText: "Marital Status",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Text(
-              "Health Status",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Conception Term",
-                  labelText: "Conception Term",
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: maritalinfoController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Marital Info",
+                      labelText: "Marital Info",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Conception Duration(Week) ",
-                  labelText: "Conception Duration(Week) ",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 40.0,
-            ),
-            Text(
-              "Payment Details",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Payment Mode",
-                  labelText: "Payment Mode",
+                SizedBox(
+                  height: 40,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Account Name",
-                  labelText: "Account Name",
+                Text(
+                  "Present Address",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              width: 300,
-              child: TextFormField(
-                //  controller: _confirmpasswordController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
-                  hintText: "Account No",
-                  labelText: "Account No",
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 60.0,
-            ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                   controller: divisionController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Division",
+                      labelText: "Division",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                     controller: districtController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "District",
+                      labelText: "District",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                   controller: upazilaController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Upazila",
+                      labelText: "Upazila",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                     controller: unionController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Union",
+                      labelText: "Union",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                     controller: wardnoController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Ward No",
+                      labelText: "Ward No",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                 controller: villageController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Village",
+                      labelText: "Village",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: postcodeController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Post Code",
+                      labelText: "Post Code",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: roadController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Road/Block/Sector",
+                      labelText: "Road/Block/Sector",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                     controller: maritalstatusController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Marital Status",
+                      labelText: "Marital Status",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Text(
+                  "Health Status",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                      controller: conceptionController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Conception Term",
+                      labelText: "Conception Term",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                     controller: conceptiondurationController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Conception Duration(Week) ",
+                      labelText: "Conception Duration(Week) ",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 40.0,
+                ),
+                Text(
+                  "Payment Details",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                      controller: paymentmodeController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Payment Mode",
+                      labelText: "Payment Mode",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: accountnameController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Account Name",
+                      labelText: "Account Name",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: accountnoController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12)),
+                      hintText: "Account No",
+                      labelText: "Account No",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 60.0,
+                ),
 
-            Container(
-              alignment: Alignment.center,
-              child: ElevatedButton(
-                onPressed: () {
-                  uploaduserinfo();
+
+                Container(
+                  alignment: Alignment.center,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      uploaduserinfo();
+                      showDialog(context: context, builder: (context) {
+                        return Container(
+                            child: AlertDialog(
+                              title: Text("Your application has been submitted successfully"),
+                              actions: [
+                                TextButton(onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    MyRoutes.dashboard,
+                                  );
+                                }, child: Text("ok"))
+                              ],
+                            )
+                        );
+                      });
+
+                      /*
+
 
                   Navigator.pushNamed(
                     context,
                     MyRoutes.lognipage,
                   );
-                },
-                child: Text('Submit'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xffd97348),
 
-                  //Color(0xffeb6f1c),
+                   */
+                    },
+                    child: Text('Submit'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xffd97348),
+
+                      //Color(0xffeb6f1c),
+                    ),
+                  ),
                 ),
-              ),
-            ),
 
-            SizedBox(
-              height: 100,
-            ),
-          ],
-        )));
+                SizedBox(
+                  height: 100,
+                ),
+              ],
+            )));
   }
 }

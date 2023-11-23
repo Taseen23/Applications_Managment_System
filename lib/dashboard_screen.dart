@@ -27,10 +27,10 @@ class DashboardScreen extends StatelessWidget {
             Container(
               alignment: Alignment.topCenter,
               child: Container(
-                width: MediaQuery.of(context).size.width / 2, // Adjust the width as needed
+                width: MediaQuery.of(context).size.width / 2,
                 child: PieChart(
                   dataMap: dataMap,
-                  chartRadius: MediaQuery.of(context).size.width / 1.2,
+                  chartRadius: MediaQuery.of(context).size.width / 1.5,
                 ),
               ),
               ),

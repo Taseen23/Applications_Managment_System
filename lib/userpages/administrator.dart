@@ -25,6 +25,12 @@ class _AdminState extends State<Admin> {
 
 
     return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "MCBP",
+          ),
+          centerTitle: true,
+        ),
       body:
       SingleChildScrollView(
           child: Container(
