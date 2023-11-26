@@ -45,7 +45,7 @@ class MyDrawer extends StatelessWidget {
                 Navigator.pushNamed(context, MyRoutes.lognipage);
               },
             child: Text(
-              "ড্যাশবোর্ড",
+              "Dashboard",
               //"Dashboard",
               textScaleFactor: 1.2,
               style: TextStyle(
@@ -66,8 +66,8 @@ class MyDrawer extends StatelessWidget {
               },
 
             child: Text(
-              "অ্যাডমিনিস্ট্রেটর",
-              //"Administration",
+              //"অ্যাডমিনিস্ট্রেটর",
+              "Administration",
               textScaleFactor: 1.2,
               style: TextStyle(
                 color: Colors.black87,
@@ -88,8 +88,8 @@ class MyDrawer extends StatelessWidget {
 
 
             child:Text(
-              "আবেদন",
-              //"Applications",
+             // "আবেদন",
+              "Applications",
               textScaleFactor: 1.2,
               style: TextStyle(
                 color: Colors.black87,
@@ -108,8 +108,8 @@ class MyDrawer extends StatelessWidget {
                 Navigator.pushNamed(context, MyRoutes.final_selection);
               },
             child:Text(
-              "চূড়ান্ত নির্বাচন",
-              //  "Final Selection",
+              //"চূড়ান্ত নির্বাচন",
+               "Final Selection",
               textScaleFactor: 1.2,
               style: TextStyle(
                 color: Colors.black87,
@@ -128,8 +128,8 @@ class MyDrawer extends StatelessWidget {
                 Navigator.pushNamed(context, MyRoutes.report);
               },
             child: Text(
-              "রিপোর্ট",
-              //"Final Acceptation",
+              //"রিপোর্ট",
+              "Final Acceptation",
               textScaleFactor: 1.2,
               style: TextStyle(
                 color: Colors.black87,
@@ -149,8 +149,8 @@ class MyDrawer extends StatelessWidget {
                 Navigator.pushNamed(context, MyRoutes.lognipage);
               },
               child: Text(
-                "লগআউট",
-                //"Final Acceptation",
+                //"লগআউট",
+                "Log Out",
                 textScaleFactor: 1.2,
                 style: TextStyle(
                   color: Colors.black87,

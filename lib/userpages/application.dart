@@ -1,6 +1,9 @@
+
+
+
 import 'package:flutter/material.dart';
 import 'package:mcbp_practicum/database.dart';
-
+//import 'package:file_picker/file_picker.dart';
 import '../utils/routes.dart';
 
 class Application extends StatefulWidget {
@@ -11,6 +14,28 @@ class Application extends StatefulWidget {
 }
 
 class _ApplicationState extends State<Application> {
+  //PlatformFile? pickedFile;
+  /*
+  Future uploadFile() async {
+    final path ='files/my-image.jpg';
+    final file= File(pickedFile!.path! as List<Object>);
+    final ref = FirebaseStorage.instance.ref().child(path);
+    ref.putFile(file as File);
+  }
+
+   */
+/*
+  Future selectFile() async {
+    final result = await FilePicker.platform.pickFiles();
+    if (result == null) return;
+    setState(() {
+      pickedFile = result.files.first;
+    });
+  }
+
+ */
+
+
   uploaduserinfo() async {
     Map<String, dynamic> uploaduserinfo = {
       "NID": nidController.text.trim(),
@@ -89,11 +114,11 @@ class _ApplicationState extends State<Application> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-      title: Text(
-      "MCBP",
-    ),
-    centerTitle: true,
-    ),
+          title: Text(
+            "MCBP",
+          ),
+          centerTitle: true,
+        ),
         body: SingleChildScrollView(
             child: Column(
               children: [
@@ -167,7 +192,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                      controller: nameController,
+                    controller: nameController,
 
                     obscureText: false,
                     decoration: InputDecoration(
@@ -202,7 +227,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                      controller: mothernameController,
+                    controller: mothernameController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -236,7 +261,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                   controller: applicantnickController,
+                    controller: applicantnickController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -270,7 +295,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                     controller: religionController,
+                    controller: religionController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -287,7 +312,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                     controller: mobilenoController,
+                    controller: mobilenoController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -304,7 +329,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                   controller: educationlevelController,
+                    controller: educationlevelController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -369,7 +394,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                   controller: divisionController,
+                    controller: divisionController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -386,7 +411,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                     controller: districtController,
+                    controller: districtController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -403,7 +428,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                   controller: upazilaController,
+                    controller: upazilaController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -420,7 +445,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                     controller: unionController,
+                    controller: unionController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -437,7 +462,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                     controller: wardnoController,
+                    controller: wardnoController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -454,7 +479,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                 controller: villageController,
+                    controller: villageController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -505,7 +530,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                     controller: maritalstatusController,
+                    controller: maritalstatusController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -536,7 +561,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                      controller: conceptionController,
+                    controller: conceptionController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -553,7 +578,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                     controller: conceptiondurationController,
+                    controller: conceptiondurationController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -581,7 +606,7 @@ class _ApplicationState extends State<Application> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
-                      controller: paymentmodeController,
+                    controller: paymentmodeController,
                     obscureText: false,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -626,6 +651,7 @@ class _ApplicationState extends State<Application> {
                     ),
                   ),
                 ),
+               // Text(pickedFile!.name),
                 SizedBox(
                   height: 60.0,
                 ),
@@ -637,18 +663,17 @@ class _ApplicationState extends State<Application> {
                     onPressed: () {
                       uploaduserinfo();
                       showDialog(context: context, builder: (context) {
-                        return Container(
-                            child: AlertDialog(
-                              title: Text("Your application has been submitted successfully"),
-                              actions: [
-                                TextButton(onPressed: () {
-                                  Navigator.pushNamed(
-                                    context,
-                                    MyRoutes.dashboard,
-                                  );
-                                }, child: Text("ok"))
-                              ],
-                            )
+                        return AlertDialog(
+                          title: Text(
+                              "Your application has been submitted successfully"),
+                          actions: [
+                            TextButton(onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                MyRoutes.dashboard,
+                              );
+                            }, child: Text("ok"))
+                          ],
                         );
                       });
 
@@ -662,12 +687,12 @@ class _ApplicationState extends State<Application> {
 
                    */
                     },
-                    child: Text('Submit'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xffd97348),
 
                       //Color(0xffeb6f1c),
                     ),
+                    child: Text('Submit'),
                   ),
                 ),
 
