@@ -45,6 +45,8 @@ dependencies:
   fl_chart: ^0.40.0
   firebase_storage: ^11.5.1
   firebase_auth: ^4.14.0
+  get: ^4.6.6
+  carousel_slider: ^4.0.0
 
 
 dev_dependencies:

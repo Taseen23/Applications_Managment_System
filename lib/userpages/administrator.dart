@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mcbp_practicum/database.dart';
 
 import '../utils/routes.dart';
 
@@ -12,7 +14,9 @@ class Admin extends StatefulWidget {
 
 class _AdminState extends State<Admin> {
 
-  late String selectedOption;
+  late String father,mother,nid;
+ // late String selectedOption;
+
 
   final List<String> options = ['LMA', 'MCBP', 'অন্যান্য', ];
   final List<String> options1 = ['ব্যবহারকারীর ধরণ','মন্ত্রণালয়', 'পরিচালক দপ্তর', 'অন্যান্য', ];
@@ -20,6 +24,18 @@ class _AdminState extends State<Admin> {
   final List<String> options3 = ['এডমিন', ];
 
   TextEditingController textEditingController = TextEditingController();
+  searchApplicant(String name)async{
+    QuerySnapshot querySnapshot= await DatabaseMetgods().getapplicantInfo(name);
+    nid="${querySnapshot.docs[0]["NID"]}";
+    father="${querySnapshot.docs[0]["Father Name"]}";
+    mother="${querySnapshot.docs[0]["Mother Name"]}";
+    setState(() {
+
+    });
+
+  }
+  
+  
   @override
   Widget build(BuildContext context) {
 
@@ -34,7 +50,9 @@ class _AdminState extends State<Admin> {
       body:
       SingleChildScrollView(
           child: Container(
+            /*
               decoration: BoxDecoration(
+                /*
                   gradient: LinearGradient(
                     colors: [
                       Color(0xFF7ebcd9),
@@ -44,7 +62,11 @@ class _AdminState extends State<Admin> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   )
+
+                 */
               ),
+
+             */
           child: Center(
               child:
 
@@ -75,17 +97,18 @@ class _AdminState extends State<Admin> {
                       child: TextFormField
                       //Padding(padding: Size.fromWidth(20), Size.fromHeight(30),
                         (
-                        // controller: _firstnameController,
+                         // controller: _firstnameController,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                               borderRadius: BorderRadius.circular(12)
                           ),
-                          hintText: "ব্যবহারকারীর আইডি দিন",
-                          labelText: "ব্যবহারকারীর আইডি",
+                          hintText: "NID",
+                          labelText: "NID",
                         ),
                       ),
                     ),
+                    /*
                     SizedBox(
                       height: 20.0,
                     ),
@@ -229,22 +252,23 @@ class _AdminState extends State<Admin> {
                         ),
                       ),
                     ),
+                    */
                     SizedBox(
-                      height: 20.0,
-                    ),
-                    SizedBox(
-                      height: 40,
+                      height: 200.0,
                     ),
                     Container(
                       alignment: Alignment.center,
 
                       child: ElevatedButton(
                         onPressed: () {
+                          searchApplicant(textEditingController.text);
 
+/*
                           Navigator.pushNamed(
                             context,
                             MyRoutes.lognipage,
                           );
+                          */
                         }  ,
                         child:Text('খুঁজুন'),
 

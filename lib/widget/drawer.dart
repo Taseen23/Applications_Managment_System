@@ -2,12 +2,39 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../database.dart';
 import '../utils/routes.dart';
 //import 'package:test_project/utils/routes.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
+
   const MyDrawer({super.key});
+
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  /*
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  //TextEditingController _passwordController = TextEditingController();
+ // TextEditingController _confirmpasswordController = TextEditingController();
+  DatabaseMetgods? dataController;
+  initState(){
+    super.initState();
+   dataController = Get.find<DatabaseMetgods>();
+    _usernameController.text =dataController!.myDocument!.get("Name");
+    _emailController.text =dataController!.myDocument!.get("Mobile No");
+
+
+
+  }
+
+   */
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +45,10 @@ class MyDrawer extends StatelessWidget {
           DrawerHeader(
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
-                  accountEmail: Text("20103264@iubat.edu"),
+                  accountEmail: Text("taseenalam13@gmail.com",),
 
                   // accountEmail: Text(user.email.toString()),
-                  accountName: Text("Taseen Alam Dehan"),
+                  accountName: Text("Taseen Alam Dehan",),
                   currentAccountPicture: CircleAvatar(
                     backgroundImage:
                    // Image: AssetImage('assets/your_background_image.jpg'),
@@ -42,7 +69,7 @@ class MyDrawer extends StatelessWidget {
             InkWell(
               onTap: () async {
                 await Future.delayed(Duration(seconds: 0));
-                Navigator.pushNamed(context, MyRoutes.lognipage);
+                Navigator.pushNamed(context, MyRoutes.dashboard);
               },
             child: Text(
               "Dashboard",
