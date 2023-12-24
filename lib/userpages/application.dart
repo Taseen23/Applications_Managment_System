@@ -36,7 +36,7 @@ class _ApplicationState extends State<Application> {
  */
 
 
-  uploaduserinfo() async {
+  addApplicantDetails() async {
     Map<String, dynamic> uploaduserinfo = {
       "NID": nidController.text.trim(),
       "Date Of Birth": dobController.text.trim(),
@@ -66,7 +66,7 @@ class _ApplicationState extends State<Application> {
       "Account Name": accountnameController.text,
       "Account No": accountnoController.text,
     };
-    await DatabaseMetgods().addUserDetails(uploaduserinfo);
+    await DatabaseMetgods().addApplicantDetails(uploaduserinfo);
   }
 
   TextEditingController nidController = TextEditingController();
@@ -661,7 +661,7 @@ class _ApplicationState extends State<Application> {
                   alignment: Alignment.center,
                   child: ElevatedButton(
                     onPressed: () {
-                      uploaduserinfo();
+                      addApplicantDetails();
                       showDialog(context: context, builder: (context) {
                         return AlertDialog(
                           title: Text(

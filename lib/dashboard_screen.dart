@@ -10,7 +10,7 @@ class DashboardScreen extends StatelessWidget {
       'assists/images/image1.jpg',
       'assists/images/image2.jpg',
       'assists/images/image3.jpg',
-      // Add more image asset paths as needed
+
     ];
     Map<String, double> dataMap = {
       "ইউনিয়ন": 400,
@@ -76,7 +76,7 @@ class DashboardScreen extends StatelessWidget {
                         child: Image.asset(
                             "assists/images/govlogo.png",
                             width: 75,
-                            height: 60,
+                            height: 65,
                             fit:BoxFit.fill)),
                     const SizedBox(
                       width: 15,
@@ -91,6 +91,7 @@ class DashboardScreen extends StatelessWidget {
                     const SizedBox(
                       width: 15,
                     ),
+                    Text(""),
 
 
                   ]
