@@ -53,6 +53,19 @@ class DatabaseMetgods {
       print('Error storing data in Beneficiary table: $error');
     });
   }
+  void fetchBeneficiaries(Map<String, dynamic> applicantData) {
+    // Store the selected applicant data in the "Beneficiary" table
+    FirebaseFirestore.instance.collection('Beneficiary').add({
+      'NID': applicantData['NID'],
+      'Name': applicantData['Name'],
+     // 'AcceptStatus': selectedOption,
+    }).then((value) {
+      // Perform any additional actions after storing data if needed
+      print('Data stored successfully in Beneficiary table');
+    }).catchError((error) {
+      print('Error storing data in Beneficiary table: $error');
+    });
+  }
 }
 
 

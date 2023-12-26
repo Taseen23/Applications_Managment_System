@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/routes.dart';
+
 class FinalSelection extends StatefulWidget {
 
 
@@ -13,6 +15,7 @@ class _FinalSelectionState extends State<FinalSelection> {
   Query? _query;
   late FirebaseFirestore _firestore;
   late CollectionReference _usersCollection;
+  String selectedOption = 'Accept';
 
   @override
   void initState() {
@@ -26,6 +29,28 @@ class _FinalSelectionState extends State<FinalSelection> {
     setState(() {
       _query = _usersCollection.where('NID', isEqualTo: _nidController.text).limit(1);
     });
+  }
+  void _storeDataAndSubmit() {
+    // Get the selected applicant data
+    if (_query != null) {
+      _query!.get().then((querySnapshot) {
+        if (querySnapshot.docs.isNotEmpty) {
+          Map<String, dynamic> data = querySnapshot.docs.first.data() as Map<String, dynamic>;
+          // Store the data in the appropriate table based on the selected option
+          _firestore.collection(selectedOption).add({
+            'NID': data['NID'],
+            'Name': data['Name'],
+            'Mobile No': data['Mobile No'],
+            'AcceptStatus': selectedOption,
+          }).then((value) {
+            // Perform any additional actions after storing data if needed
+            print('Data stored successfully in $selectedOption table');
+          }).catchError((error) {
+            print('Error storing data in $selectedOption table: $error');
+          });
+        }
+      });
+    }
   }
 
   @override
@@ -146,15 +171,7 @@ class _FinalSelectionState extends State<FinalSelection> {
                                     DataCell(Text(data['Name'])),
                                 //    DataCell(Text(data['Payment Mode'])),
                                     DataCell(Text(data['Mobile No'])),
-                                    DataCell(
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          // Handle accept status button click
-                                          // You can add your logic to update the accept status here
-                                        },
-                                        child: Text('Accept'),
-                                      ),
-                                    ),
+                                    DataCell(Text(data['Account No'])),
                                   ],
                                 );
                               }).toList();
@@ -164,16 +181,66 @@ class _FinalSelectionState extends State<FinalSelection> {
 
 
                                   DataColumn(label: Text('NID')),
+
                                   DataColumn(label: Text('Name')),
                                 //  DataColumn(label: Text('Payment Mode')),
                                   DataColumn(label: Text('Mobile No')),
-                                  DataColumn(label: Text('Accept Status')),
+                                  DataColumn(label: Text('Account No')),
+
                                 ],
                                 rows: rows,
                                 columnSpacing: 12.0,
                               );
                             }
                           },
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: Column(
+                            children: [
+                              Text('Selection Status:'),
+                              DropdownButton<String>(
+                                value: selectedOption,
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedOption = newValue!;
+                                  });
+                                },
+                                items: <String>['Accept', 'Reject'].map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  _storeDataAndSubmit();
+                                  showDialog(context: context, builder: (context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          "Successfully Accepted As Benificary"),
+                                      actions: [
+                                        TextButton(onPressed: () {
+                                          Navigator.pushNamed(
+                                            context,
+                                            MyRoutes.dashboard,
+                                          );
+                                        }, child: Text("ok"))
+                                      ],
+                                    );
+                                  });
+                                },
+                                child: Text('Submit'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Color(0xffd97348),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ]
                   )
