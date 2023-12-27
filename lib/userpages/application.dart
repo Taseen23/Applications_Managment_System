@@ -1,10 +1,19 @@
 
 
 
+
+
+import 'dart:html';
+
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mcbp_practicum/database.dart';
-//import 'package:file_picker/file_picker.dart';
+
 import '../utils/routes.dart';
+import 'dart:io' as io;
 
 class Application extends StatefulWidget {
   const Application({super.key});
@@ -14,6 +23,25 @@ class Application extends StatefulWidget {
 }
 
 class _ApplicationState extends State<Application> {
+  final picker = ImagePicker();
+
+  Future<void> pickFile() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    // Handle the picked file (upload to Firebase Storage).
+    if (pickedFile != null) {
+      // Upload the file to Firebase Storage here.
+    }
+  }
+  Future<void> uploadFile(File file) async {
+    try {
+      firebase_storage.Reference storageReference =
+      firebase_storage.FirebaseStorage.instance.ref().child("uploads/$file.path");
+      await storageReference.putFile(file as io.File);
+      print("File uploaded successfully!");
+    } catch (e) {
+      print("Error uploading file: $e");
+    }
+  }
   //PlatformFile? pickedFile;
   /*
   Future uploadFile() async {
@@ -654,6 +682,11 @@ class _ApplicationState extends State<Application> {
                // Text(pickedFile!.name),
                 SizedBox(
                   height: 60.0,
+                ),
+
+                ElevatedButton(
+                  onPressed: pickFile,
+                  child: Text('Pick File'),
                 ),
 
 

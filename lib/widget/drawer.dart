@@ -50,13 +50,16 @@ class _MyDrawerState extends State<MyDrawer> {
                   // accountEmail: Text(user.email.toString()),
                   accountName: Text("Taseen Alam Dehan",),
                   currentAccountPicture: CircleAvatar(
-                    backgroundImage:
-                   // Image: AssetImage('assets/your_background_image.jpg'),
+
+                   backgroundImage:
+                     AssetImage('assists/images/tasseen.jpg'),
                        // Image.asset("assists/images/tasseen.jpg"),
 
-                   NetworkImage(
-                        'https://www.facebook.com/messenger_media/?attachment_id=1330498180878882&message_id=mid.%24cAAAAAefgzh-PYvz2_GJMbeppyLJN&thread_id=100009361145553'
+                  /* NetworkImage(
+                        'https://www.facebook.com/photo/?fbid=3413161075616149&set=a.1607379139527694'
                     ),
+
+                   */
 
                   ) //   currentAccountPicture: Image.asset("assists/images/1664440310932.jpeg")
                   )),
