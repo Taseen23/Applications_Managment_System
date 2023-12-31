@@ -3,7 +3,6 @@
 
 
 
-import 'dart:html';
 
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
@@ -13,7 +12,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mcbp_practicum/database.dart';
 
 import '../utils/routes.dart';
-import 'dart:io' as io;
+//import 'dart:io' as io;
+import 'dart:io';
 
 class Application extends StatefulWidget {
   const Application({super.key});
@@ -32,11 +32,11 @@ class _ApplicationState extends State<Application> {
       // Upload the file to Firebase Storage here.
     }
   }
-  Future<void> uploadFile(File file) async {
+  Future<void> uploadFile(file) async {
     try {
       firebase_storage.Reference storageReference =
       firebase_storage.FirebaseStorage.instance.ref().child("uploads/$file.path");
-      await storageReference.putFile(file as io.File);
+      await storageReference.putFile(file );
       print("File uploaded successfully!");
     } catch (e) {
       print("Error uploading file: $e");
