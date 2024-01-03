@@ -169,6 +169,28 @@ class _MyDrawerState extends State<MyDrawer> {
           ),
           ListTile(
             leading: Icon(
+              CupertinoIcons.doc_person,
+              color: Colors.black87,
+            ),
+            title: InkWell(
+              onTap: () async {
+                await Future.delayed(const Duration(seconds: 0));
+                Navigator.pushNamed(context, MyRoutes.reportgen);
+              },
+
+
+              child:Text(
+                // "আবেদন",
+                "Report",
+                textScaleFactor: 1.2,
+                style: TextStyle(
+                  color: Colors.black87,
+                ),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(
               CupertinoIcons.escape,
               color: Colors.black87,
             ),
@@ -188,6 +210,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
             ),
           ),
+
         ],
       ),
     );

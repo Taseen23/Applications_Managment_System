@@ -69,13 +69,13 @@ class DashboardScreen extends StatelessWidget {
               child: Row(
                   children: [
                     SizedBox(
-                      width: 140,
+                      width: 130,
                     ),
                     GestureDetector(
                         onTap: () {},
                         child: Image.asset(
                             "assists/images/govlogo.png",
-                            width: 75,
+                            width: 80,
                             height: 65,
                             fit:BoxFit.fill)),
                     const SizedBox(
@@ -85,20 +85,21 @@ class DashboardScreen extends StatelessWidget {
                         onTap: () {},
                         child: Image.asset(
                             "assists/images/World-Food-Programme-Logo_e.jpg",
-                            width: 75,
+                            width: 80,
                             height: 60,
                             fit:BoxFit.fill)),
                     const SizedBox(
                       width: 15,
                     ),
-                    Text(""),
 
 
                   ]
 
 
               ),
-            )
+            ),
+            Image.asset("assists/images/শ্লোগান.png",height: 250,width: 250,),
+
 
 
           ],

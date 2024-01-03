@@ -7,6 +7,8 @@ class MyRoutes {
   static String final_selection = "/final_selection";
   static String report = "/report";
   static String triggerpage = "/triggerpage";
+  static String reportgen = "/report_gen";
+
 
 
 

@@ -78,7 +78,7 @@ class _AdminState extends State<Admin> {
                     ),
 
                     Text(
-                      "ব্যবহারকারী তালিকা",
+                      "List Of Users",
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
