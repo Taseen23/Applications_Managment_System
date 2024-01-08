@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:mcbp_practicum/paymentcontroller.dart';
 import '../utils/routes.dart';
 
 class Report extends StatefulWidget {
@@ -10,6 +10,7 @@ class Report extends StatefulWidget {
 }
 
 class _ReportState extends State<Report> {
+  var obj = PaymentController();
   TextEditingController _nidController = TextEditingController();
 
   Query? _query;
@@ -216,6 +217,9 @@ class _ReportState extends State<Report> {
                                     child: Text(value),
                                   );
                                 }).toList(),
+                              ),
+                              ElevatedButton(onPressed: ()=> obj.makePayment(amount: '5', currency: "USD"),
+                                  child: Text("Make Payment"),
                               ),
                               SizedBox(
                                 height: 10.0,
