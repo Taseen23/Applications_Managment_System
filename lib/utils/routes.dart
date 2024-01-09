@@ -8,6 +8,9 @@ class MyRoutes {
   static String report = "/report";
   static String triggerpage = "/triggerpage";
   static String reportgen = "/report_gen";
+  static String loginuserpage = "/login_screen_user";
+  static String dashboarduser = "/dashboard_screen_user";
+  static String drwaer_user = "/drawer1";
 
 
 

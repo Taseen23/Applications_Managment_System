@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mcbp_practicum/Firebase_auth_implimentation/authentication.dart';
+import 'package:mcbp_practicum/Controller/authentication.dart';
 import 'package:mcbp_practicum/utils/routes.dart';
 
 class SingupScreen extends StatefulWidget {

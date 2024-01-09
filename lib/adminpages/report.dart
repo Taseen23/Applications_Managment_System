@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mcbp_practicum/paymentcontroller.dart';
+import 'package:mcbp_practicum/Controller/paymentcontroller.dart';
 import '../utils/routes.dart';
 
 class Report extends StatefulWidget {

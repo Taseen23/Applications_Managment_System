@@ -9,15 +9,15 @@ import '../Controller/database.dart';
 import '../utils/routes.dart';
 //import 'package:test_project/utils/routes.dart';
 
-class MyDrawer extends StatefulWidget {
+class MyDrawer_user extends StatefulWidget {
 
-  const MyDrawer({super.key});
+  const MyDrawer_user({super.key});
 
   @override
-  State<MyDrawer> createState() => _MyDrawerState();
+  State<MyDrawer_user> createState() => _MyDrawer_userState();
 }
 
-class _MyDrawerState extends State<MyDrawer> {
+class _MyDrawer_userState extends State<MyDrawer_user> {
   /*
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
@@ -51,18 +51,18 @@ class _MyDrawerState extends State<MyDrawer> {
                   accountName: Text("Taseen Alam Dehan",),
                   currentAccountPicture: CircleAvatar(
 
-                   backgroundImage:
-                     AssetImage('assists/images/tasseen.jpg'),
-                       // Image.asset("assists/images/tasseen.jpg"),
+                    backgroundImage:
+                    AssetImage('assists/images/tasseen.jpg'),
+                    // Image.asset("assists/images/tasseen.jpg"),
 
-                  /* NetworkImage(
+                    /* NetworkImage(
                         'https://www.facebook.com/photo/?fbid=3413161075616149&set=a.1607379139527694'
                     ),
 
                    */
 
                   ) //   currentAccountPicture: Image.asset("assists/images/1664440310932.jpeg")
-                  )),
+              )),
           ListTile(
             leading: Icon(
               CupertinoIcons.slider_horizontal_below_rectangle,
@@ -74,37 +74,17 @@ class _MyDrawerState extends State<MyDrawer> {
                 await Future.delayed(Duration(seconds: 0));
                 Navigator.pushNamed(context, MyRoutes.dashboard);
               },
-            child: Text(
-              "Dashboard",
-              //"Dashboard",
-              textScaleFactor: 1.2,
-              style: TextStyle(
-                color: Colors.black87,
+              child: Text(
+                "Dashboard",
+                //"Dashboard",
+                textScaleFactor: 1.2,
+                style: TextStyle(
+                  color: Colors.black87,
+                ),
               ),
             ),
-            ),
           ),
-          ListTile(
-            leading: Icon(
-              CupertinoIcons.profile_circled,
-              color: Colors.black87,
-            ),
-            title: InkWell(
-              onTap: () async {
-                await Future.delayed(Duration(seconds: 0));
-                Navigator.pushNamed(context, MyRoutes.administrator);
-              },
 
-            child: Text(
-              //"অ্যাডমিনিস্ট্রেটর",
-              "Administration",
-              textScaleFactor: 1.2,
-              style: TextStyle(
-                color: Colors.black87,
-              ),
-            ),
-            ),
-          ),
           ListTile(
             leading: Icon(
               CupertinoIcons.doc_person,
@@ -117,36 +97,17 @@ class _MyDrawerState extends State<MyDrawer> {
               },
 
 
-            child:Text(
-             // "আবেদন",
-              "Applications",
-              textScaleFactor: 1.2,
-              style: TextStyle(
-                color: Colors.black87,
+              child:Text(
+                // "আবেদন",
+                "Application",
+                textScaleFactor: 1.2,
+                style: TextStyle(
+                  color: Colors.black87,
+                ),
               ),
             ),
-            ),
           ),
-          ListTile(
-            leading: Icon(
-              CupertinoIcons.arrow_right_arrow_left_square,
-              color: Colors.black87,
-            ),
-            title: InkWell(
-              onTap: () async {
-                await Future.delayed(Duration(seconds: 0));
-                Navigator.pushNamed(context, MyRoutes.final_selection);
-              },
-            child:Text(
-              //"চূড়ান্ত নির্বাচন",
-               "Final Selection",
-              textScaleFactor: 1.2,
-              style: TextStyle(
-                color: Colors.black87,
-              ),
-            ),
-            ),
-          ),
+
           ListTile(
             leading: Icon(
               CupertinoIcons.rectangle_stack,
@@ -157,31 +118,9 @@ class _MyDrawerState extends State<MyDrawer> {
                 await Future.delayed(Duration(seconds: 0));
                 Navigator.pushNamed(context, MyRoutes.report);
               },
-            child: Text(
-              //"রিপোর্ট",
-              "Beneficiaries",
-              textScaleFactor: 1.2,
-              style: TextStyle(
-                color: Colors.black87,
-              ),
-            ),
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              CupertinoIcons.doc_person,
-              color: Colors.black87,
-            ),
-            title: InkWell(
-              onTap: () async {
-                await Future.delayed(const Duration(seconds: 0));
-                Navigator.pushNamed(context, MyRoutes.reportgen);
-              },
-
-
-              child:Text(
-                // "আবেদন",
-                "Report",
+              child: Text(
+                //"রিপোর্ট",
+                "Beneficiaries",
                 textScaleFactor: 1.2,
                 style: TextStyle(
                   color: Colors.black87,
@@ -189,6 +128,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
             ),
           ),
+
           ListTile(
             leading: Icon(
               CupertinoIcons.escape,

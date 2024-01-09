@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/routes.dart';
+import 'utils/routes.dart';
 
 class triggerScreen extends StatelessWidget {
   @override
@@ -68,7 +68,7 @@ class triggerScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamed(
                         context,
-                        MyRoutes.lognipage,
+                        MyRoutes.loginuserpage,
                       );
 
                     },

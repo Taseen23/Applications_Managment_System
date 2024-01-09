@@ -1,17 +1,20 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:mcbp_practicum/login_screen.dart';
+import 'package:mcbp_practicum/adminpages/login_screen.dart';
 import 'package:mcbp_practicum/userpages/administrator.dart';
-import 'package:mcbp_practicum/userpages/application.dart';
-import 'package:mcbp_practicum/userpages/final_selection.dart';
-import 'package:mcbp_practicum/userpages/report.dart';
+import 'package:mcbp_practicum/application.dart';
+import 'package:mcbp_practicum/userpages/dashboard_screen_users.dart';
+import 'package:mcbp_practicum/adminpages/final_selection.dart';
+import 'package:mcbp_practicum/userpages/login_screen_user.dart';
+import 'package:mcbp_practicum/adminpages/report.dart';
 import 'package:mcbp_practicum/signup_screen.dart';
-import 'package:mcbp_practicum/userpages/report_gen.dart';
+import 'package:mcbp_practicum/adminpages/report_gen.dart';
 import 'package:mcbp_practicum/utils/routes.dart';
+import 'package:mcbp_practicum/widget/drawer1.dart';
 
-import 'adminpages/triggerpage.dart';
-import 'dashboard_screen.dart';
+import 'triggerpage.dart';
+import 'adminpages/dashboard_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +40,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: triggerScreen(),
+      home: DashboardScreen_user(),
       routes: {
         MyRoutes.lognipage: (Context) => LoginScreen(),
         MyRoutes.dashboard: (Context) => DashboardScreen(),
@@ -48,6 +51,9 @@ class MyApp extends StatelessWidget {
         MyRoutes.application: (Context) => Application(),
         MyRoutes.triggerpage: (Context) => triggerScreen(),
         MyRoutes.reportgen: (Context) => ReportGen(),
+        MyRoutes.loginuserpage: (Context) => LoginScreen_user(),
+        MyRoutes.dashboarduser: (Context) => DashboardScreen_user(),
+        MyRoutes.drwaer_user: (Context) => MyDrawer_user(),
       },
     );
   }

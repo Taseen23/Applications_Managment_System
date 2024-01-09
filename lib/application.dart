@@ -9,9 +9,9 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mcbp_practicum/database.dart';
+import 'package:mcbp_practicum/Controller/database.dart';
 
-import '../utils/routes.dart';
+import 'utils/routes.dart';
 //import 'dart:io' as io;
 import 'dart:io';
 

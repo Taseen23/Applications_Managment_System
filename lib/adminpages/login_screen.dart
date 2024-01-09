@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mcbp_practicum/utils/routes.dart';
 
-import 'Firebase_auth_implimentation/authentication.dart';
+import '../Controller/authentication.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -50,7 +50,7 @@ class LoginPageState extends State<LoginScreen> {
         SizedBox(
           height: 20.0,
         ),
-        Text("Welcome",
+        Text("Welcome Admin",
             style: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.bold,
