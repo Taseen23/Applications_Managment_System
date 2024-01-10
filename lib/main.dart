@@ -8,7 +8,7 @@ import 'package:mcbp_practicum/userpages/beneficiaries_user.dart';
 import 'package:mcbp_practicum/userpages/dashboard_screen_users.dart';
 import 'package:mcbp_practicum/adminpages/final_selection.dart';
 import 'package:mcbp_practicum/userpages/login_screen_user.dart';
-import 'package:mcbp_practicum/adminpages/benificaries_user.dart';
+import 'package:mcbp_practicum/adminpages/benificaries_admin.dart';
 import 'package:mcbp_practicum/signup_screen.dart';
 import 'package:mcbp_practicum/adminpages/report_gen.dart';
 import 'package:mcbp_practicum/utils/routes.dart';
@@ -41,14 +41,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Report(),
+      home: triggerScreen(),
       routes: {
         MyRoutes.lognipage: (Context) => LoginScreen(),
         MyRoutes.dashboard: (Context) => DashboardScreen(),
         MyRoutes.singup: (Context) => SingupScreen(),
         MyRoutes.administrator: (Context) => Admin(),
         MyRoutes.final_selection: (Context) => FinalSelection(),
-        MyRoutes.benifiries_user: (Context) => Report(),
+        MyRoutes.benificaries_admin: (Context) => Report(),
         MyRoutes.application: (Context) => Application(),
         MyRoutes.triggerpage: (Context) => triggerScreen(),
         MyRoutes.reportgen: (Context) => ReportGen(),

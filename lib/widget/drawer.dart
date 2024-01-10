@@ -155,7 +155,7 @@ class _MyDrawerState extends State<MyDrawer> {
             title: InkWell(
               onTap: () async {
                 await Future.delayed(Duration(seconds: 0));
-                Navigator.pushNamed(context, MyRoutes.benificaries_user);
+                Navigator.pushNamed(context, MyRoutes.benificaries_admin);
               },
             child: Text(
               //"রিপোর্ট",

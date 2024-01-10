@@ -5,7 +5,7 @@ class MyRoutes {
   static String administrator = "/administrator";
   static String application = "/application";
   static String final_selection = "/final_selection";
-  static String benificaries_user = "/benificaries_user";
+  static String benificaries_admin = "/benificaries_admin";
   static String triggerpage = "/triggerpage";
   static String reportgen = "/report_gen";
   static String loginuserpage = "/login_screen_user";
