@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:mcbp_practicum/Controller/paymentcontroller.dart';
 import '../utils/routes.dart';
+import 'package:http/http.dart'as http;
 
 class Report extends StatefulWidget {
 
@@ -10,6 +14,57 @@ class Report extends StatefulWidget {
 }
 
 class _ReportState extends State<Report> {
+
+  Map<String,dynamic>? paymentIntent;
+  void makePayment() async{
+    try{
+      paymentIntent = await createPaymentIntent();
+
+      var gpay=PaymentSheetGooglePay(
+          merchantCountryCode: "USD",
+          currencyCode: "USD",
+          testEnv: true,
+      );
+      Stripe.instance.initPaymentSheet(paymentSheetParameters: SetupPaymentSheetParameters(
+        paymentIntentClientSecret: paymentIntent!["client_secret"],
+        style: ThemeMode.dark,
+        merchantDisplayName: "Sabir",
+        googlePay: gpay,
+      ));
+      displayPaymentSheet();
+
+    } catch(e){}
+  }
+  Future<void> displayPaymentSheet() async {
+    try{
+      await Stripe.instance.presentPaymentSheet();
+      print ("done");
+    } catch (e) {
+      print("Failed");
+
+    }
+  }
+  createPaymentIntent()async{
+    try{
+      Map<String, dynamic> body ={
+        "amount":"100",
+        "currency":"US",
+      };
+      http.Response response=await http.post(Uri.parse("https://api.stripe.com/v1/payment_intents"),
+      body: body,
+        headers: {
+        "Authorization":"Bearer sk_test_51OTKxSJqHrW7Yr6bwZzOI4WxgZlGM29e0X2FPlhwCSiMCAXoYcGkRsPKtQhvncroPtlOWdi8Cwxh1vxm0YE01Yi600486wCigE",
+          "Content-Type" : "application/x-www-form-urlencoded",
+        });
+      return json.decode(response.body);
+
+
+    } catch(e){
+      throw Exception(e.toString());
+    }
+  }
+
+
   var obj = PaymentController();
   TextEditingController _nidController = TextEditingController();
 
@@ -249,6 +304,11 @@ class _ReportState extends State<Report> {
                                 ),
                                 
                               ),
+                              ElevatedButton(
+                                  onPressed: (){
+                                    makePayment();
+                                  }, 
+                                  child: const Text("Please Pay"))
                               //ElevatedButton(onPressed: onPressed, child: child)
                             ],
                           ),

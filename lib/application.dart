@@ -4,7 +4,10 @@
 
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:firebase_storage/firebase_storage.dart';
 
 
 import 'package:flutter/material.dart';
@@ -23,7 +26,28 @@ class Application extends StatefulWidget {
 }
 
 class _ApplicationState extends State<Application> {
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  List<Map<String, dynamic>> pdfData=[];
+  File? myImage;
   final picker = ImagePicker();
+  void pickFile() async {
+    final pickedFile= await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+    );
+    if(pickedFile != null){
+      String fileName= pickedFile.files[0].name;
+      File file = File(pickedFile.files[0].path!);
+     final downloadLink = await UploadPdf(fileName, file);
+
+     _firebaseFirestore.collection("pdfs").add({
+       "name":fileName,
+       "url":downloadLink,
+     });
+     print ("pdf Uploaded Successfully");
+    }
+  }
+  /*
 
   Future<void> pickFile() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
@@ -32,16 +56,35 @@ class _ApplicationState extends State<Application> {
       // Upload the file to Firebase Storage here.
     }
   }
-  Future<void> uploadFile(file) async {
+
+   */
+  Future<String?> UploadPdf(String fileName, File file) async{
+    final refrence = FirebaseStorage.instance.ref().child("pdfs/$fileName.pdf");
+    final uploadTask = refrence.putFile(file);
+    await uploadTask.whenComplete(() => null);
+    final downloadLink = await refrence.getDownloadURL();
+    return downloadLink;
+  }
+  void getAllPdf() async {
+    final results =await _firebaseFirestore.collection("pdfs").get();
+    pdfData= results.docs.map((e)=> e.data()).toList();
+    setState(() {
+
+    });
+  }
+  /*
+  Future<void> uploadFile(File file) async {
     try {
       firebase_storage.Reference storageReference =
-      firebase_storage.FirebaseStorage.instance.ref().child("uploads/$file.path");
-      await storageReference.putFile(file );
+      firebase_storage.FirebaseStorage.instance.ref().child("uploads/${file.path}");
+      await storageReference.putFile(file);
       print("File uploaded successfully!");
     } catch (e) {
       print("Error uploading file: $e");
     }
   }
+
+   */
   //PlatformFile? pickedFile;
   /*
   Future uploadFile() async {

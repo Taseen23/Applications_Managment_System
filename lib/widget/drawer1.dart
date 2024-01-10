@@ -116,7 +116,7 @@ class _MyDrawer_userState extends State<MyDrawer_user> {
             title: InkWell(
               onTap: () async {
                 await Future.delayed(Duration(seconds: 0));
-                Navigator.pushNamed(context, MyRoutes.report);
+                Navigator.pushNamed(context, MyRoutes.benifiries_user);
               },
               child: Text(
                 //"রিপোর্ট",
