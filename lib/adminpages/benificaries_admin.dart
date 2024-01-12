@@ -1,76 +1,22 @@
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:mcbp_practicum/Controller/paymentcontroller.dart';
 import '../utils/routes.dart';
-import 'package:http/http.dart'as http;
+import 'package:http/http.dart' as http;
 
 class Report extends StatefulWidget {
-
   @override
   State<Report> createState() => _ReportState();
 }
 
 class _ReportState extends State<Report> {
-
-
-  Map<String,dynamic>? paymentIntent;
-  /*
-  void makePayment() async{
-    try{
-      paymentIntent = await createPaymentIntent();
-
-      var gpay=PaymentSheetGooglePay(
-          merchantCountryCode: "USD",
-          currencyCode: "USD",
-          testEnv: true,
-      );
-      Stripe.instance.initPaymentSheet(paymentSheetParameters: SetupPaymentSheetParameters(
-        paymentIntentClientSecret: paymentIntent!["client_secret"],
-        style: ThemeMode.dark,
-        merchantDisplayName: "Sabir",
-        googlePay: gpay,
-      ));
-      displayPaymentSheet();
-
-    } catch(e){}
-  }
-  Future<void> displayPaymentSheet() async {
-    try{
-      await Stripe.instance.presentPaymentSheet();
-      print ("done");
-    } catch (e) {
-      print("Failed");
-
-    }
-  }
-  createPaymentIntent()async{
-    try{
-      Map<String, dynamic> body ={
-        "amount":"100",
-        "currency":"US",
-      };
-      http.Response response=await http.post(Uri.parse("https://api.stripe.com/v1/payment_intents"),
-      body: body,
-        headers: {
-        "Authorization":"Bearer sk_test_51OTKxSJqHrW7Yr6bwZzOI4WxgZlGM29e0X2FPlhwCSiMCAXoYcGkRsPKtQhvncroPtlOWdi8Cwxh1vxm0YE01Yi600486wCigE",
-          "Content-Type" : "application/x-www-form-urlencoded",
-        });
-      return json.decode(response.body);
-
-
-    } catch(e){
-      throw Exception(e.toString());
-    }
-  }
-
-   */
-
+  Map<String, dynamic>? paymentIntent;
 
   var obj = PaymentController();
   TextEditingController _nidController = TextEditingController();
+  TextEditingController _amountController = TextEditingController(); // New controller for "Amount"
 
   Query? _query;
 
@@ -80,11 +26,11 @@ class _ReportState extends State<Report> {
 
   String selectedOption = 'Bikash';
 
+  @override
   void initState() {
     super.initState();
     _firestore = FirebaseFirestore.instance;
     _usersCollection = _firestore.collection('Accept');
-    //_updateQuery();
     _query = _usersCollection.orderBy('nid');
   }
 
@@ -95,19 +41,20 @@ class _ReportState extends State<Report> {
   }
 
   void _storeDataAndSubmit() {
-    // Get the selected applicant data
     if (_query != null) {
       _query!.get().then((querySnapshot) {
         if (querySnapshot.docs.isNotEmpty) {
           Map<String, dynamic> data = querySnapshot.docs.first.data() as Map<String, dynamic>;
-          // Store the data in the appropriate table based on the selected option
+
+          String amount = _amountController.text; // Get the "Amount" value
+
           _firestore.collection(selectedOption).add({
             'NID': data['NID'],
             'Name': data['Name'],
             'Mobile No': data['Mobile No'],
             'AcceptStatus': selectedOption,
+            'Amount': amount,
           }).then((value) {
-            // Perform any additional actions after storing data if needed
             print('Data stored successfully in $selectedOption table');
           }).catchError((error) {
             print('Error storing data in $selectedOption table: $error');
@@ -121,251 +68,200 @@ class _ReportState extends State<Report> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "MCBP",
-        ),
+        title: Text("MCBP"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-          child: Container(
-            /*
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xFF7ebcd9),
-                      Color(0xFFbb9af5),
+        child: Container(
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 100.0,
+                ),
+                Text(
+                  "Benificiary List",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    controller: _nidController,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      hintText: "Enter NID",
+                      labelText: "Enter NID",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _updateQuery();
+                    },
+                    child: Text('Search'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xffd97348),
+                    ),
+                  ),
+                ),
+                if (_query != null)
+                  StreamBuilder(
+                    stream: _query!.snapshots(),
+                    builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return CircularProgressIndicator();
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else {
+                        List<DataRow> rows = snapshot.data!.docs.map((DocumentSnapshot document) {
+                          Map<String, dynamic> data = document.data() as Map<String, dynamic>;
 
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  )
-              ),
-
-             */
-              child: Center(
-                  child:
-
-
-                  Column(
-                      children: [
-                        SizedBox(
-                          height: 100.0,
-                        ),
-
-                        Text(
-                          "Benificary List",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
-                        ),
-                        SizedBox(
-                          height: 30.0,
-                        ),
-                        SizedBox(
-                          width: 300,
-                          child: TextFormField
-                          //Padding(padding: Size.fromWidth(20), Size.fromHeight(30),
-                            (
-                            controller: _nidController,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12)
-                              ),
-                              hintText: "Enter NID",
-                              labelText: "Enter NID",
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30.0,
-                        ),
-
-                        Container(
-                          alignment: Alignment.center,
-
-                          child: ElevatedButton(
-                            onPressed: () {
-                              _updateQuery();
-                              //     searchApplicant(textController.text);
-                              /*
-
-                          Navigator.pushNamed(
-                            context,
-                            MyRoutes.lognipage,
-                          );
-
-                           */
-                            }  ,
-                            child:Text('Search'),
-
-
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xffd97348),
-
-                              //Color(0xffeb6f1c),
-
-                            ),
-
-                          ),
-
-                        ),
-                        if(_query!=null)
-                          StreamBuilder(
-
-                            stream: _query!.snapshots(),
-                            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                              if (snapshot.connectionState == ConnectionState.waiting) {
-                                return CircularProgressIndicator();
-                              } else if (snapshot.hasError) {
-                                return Text('Error: ${snapshot.error}');
-                              } else {
-                                List<DataRow> rows = snapshot.data!.docs.map((DocumentSnapshot document) {
-                                  Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-
-                                  return DataRow(
-                                    cells: [
-                                      DataCell(Text(data['NID'])),
-                                      DataCell(Text(data['Name'])),
-                                      //    DataCell(Text(data['Payment Mode'])),
-                                      DataCell(Text(data['Mobile No'])),
-                                      DataCell(Text(data['Account No'])),
-                                    ],
-                                  );
-                                }).toList();
-
-                                return DataTable(
-                                  columns: [
-
-
-                                    DataColumn(label: Text('NID')),
-
-                                    DataColumn(label: Text('Name')),
-                                    //  DataColumn(label: Text('Payment Mode')),
-                                    DataColumn(label: Text('Mobile No')),
-                                    DataColumn(label: Text('Account No')),
-
-                                  ],
-                                  rows: rows,
-                                  columnSpacing: 12.0,
-                                );
-                              }
-                            },
-                          ),
-                        Container(
-                          alignment: Alignment.center,
-                          child: Column(
-                            children: [
-                              Text('Payment Mode:'),
-                              DropdownButton<String>(
-                                value: selectedOption,
-                                onChanged: (String? newValue) {
-                                  setState(() {
-                                    selectedOption = newValue!;
-                                  });
-                                },
-                                items: <String>['Bikash', 'Nagad'].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                              ),
-                              /*
-                              ElevatedButton(onPressed: ()=> obj.makePayment(amount: '5', currency: "USD"),
-                                  child: Text("Make Payment"),
-                              ),
-
-                               */
-                              SizedBox(
-                                height: 10.0,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  _storeDataAndSubmit();
-                                  showDialog(context: context, builder: (context) {
-                                    return AlertDialog(
-                                      title: Text(
-                                          "Initiate Payment Successfull7"),
-                                      actions: [
-                                        TextButton(onPressed: () {
-                                          Navigator.pushNamed(
-                                            context,
-                                            MyRoutes.dashboard,
-                                          );
-                                        }, child: Text("ok"))
-                                      ],
-                                    );
-                                  });
-                                },
-                                child: Text('Submit'),
-                                style: ElevatedButton.styleFrom(
-                                  
-                                  backgroundColor: Color(0xffd97348),
-                                ),
-                                
-                              ),
-                              ElevatedButton(
-                                  onPressed: (){
-                                    makePayment();
-                                  }, 
-                                  child: const Text("Please Pay"))
-                              //ElevatedButton(onPressed: onPressed, child: child)
+                          return DataRow(
+                            cells: [
+                              DataCell(Text(data['NID']?.toString() ?? '')),
+                              DataCell(Text(data['Name']?.toString() ?? '')),
+                              DataCell(Text(data['Mobile No']?.toString() ?? '')),
+                              DataCell(Text(data['Account No']?.toString() ?? '')),
                             ],
+                          );
+                        }).toList();
+
+                        return DataTable(
+                          columns: [
+                            DataColumn(label: Text('NID')),
+                            DataColumn(label: Text('Name')),
+                            DataColumn(label: Text('Mobile No')),
+                            DataColumn(label: Text('Account No')),
+                          ],
+                          rows: rows,
+                          columnSpacing: 12.0,
+                        );
+                      }
+                    },
+                  ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      Text('Payment Mode:'),
+                      DropdownButton<String>(
+                        value: selectedOption,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedOption = newValue!;
+                          });
+                        },
+                        items: <String>['Bikash', 'Nagad'].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                      SizedBox(
+                        width: 300,
+                        child: TextFormField(
+                          controller: _amountController,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            hintText: "Enter Amount",
+                            labelText: "Amount",
                           ),
                         ),
-                      ]
-                  )
-              )
-
-          )
-
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          _storeDataAndSubmit();
+                          makePayment();
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text("Initiate Payment Successfully"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        MyRoutes.dashboard,
+                                      );
+                                    },
+                                    child: Text("OK"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: Text("Please Pay"),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xffd97348),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
+
   Future<void> makePayment() async {
     try {
-      paymentIntent = await createPaymentIntent('10000', 'GBP');
+      paymentIntent = await createPaymentIntent('100', 'USD');
 
-      var gpay = PaymentSheetGooglePay(merchantCountryCode: "GB",
-          currencyCode: "GBP",
-          testEnv: true);
+      var gpay = PaymentSheetGooglePay(
+        merchantCountryCode: "USD",
+        currencyCode: "USD",
+        testEnv: true,
+      );
 
-      //STEP 2: Initialize Payment Sheet
-      await Stripe.instance
-          .initPaymentSheet(
-          paymentSheetParameters: SetupPaymentSheetParameters(
-              paymentIntentClientSecret: paymentIntent![
-              'client_secret'], //Gotten from payment intent
-              style: ThemeMode.light,
-              merchantDisplayName: 'Abhi',
-              googlePay: gpay))
-          .then((value) {});
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          paymentIntentClientSecret: paymentIntent!['client_secret']!,
+          style: ThemeMode.light,
+          merchantDisplayName: 'Taseen',
+          googlePay: gpay,
+        ),
+      );
 
-      //STEP 3: Display Payment sheet
-      displayPaymentSheet();
+      await Stripe.instance.presentPaymentSheet().then((value) {
+        print("Payment Successfully");
+      });
     } catch (err) {
       print(err);
     }
   }
 
-  displayPaymentSheet() async {
-    try {
-      await Stripe.instance.presentPaymentSheet().then((value) {
-        print("Payment Successfully");
-      });
-    } catch (e) {
-      print('$e');
-    }
-  }
-
-  createPaymentIntent(String amount, String currency) async {
+  Future<Map<String, dynamic>> createPaymentIntent(String amount, String currency) async {
     try {
       Map<String, dynamic> body = {
         'amount': amount,
@@ -375,8 +271,8 @@ class _ReportState extends State<Report> {
       var response = await http.post(
         Uri.parse('https://api.stripe.com/v1/payment_intents'),
         headers: {
-          'Authorization': 'Bearer sk_test_51MWx8OAVMyklfe3C3gP4wKOhTsRdF6r1PYhhg1PqupXDITMrV3asj5Mmf0G5F9moPL6zNfG3juK8KHgV9XNzFPlq00wmjWwZYA',
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Authorization': 'Bearer sk_test_51OTKxSJqHrW7Yr6bwZzOI4WxgZlGM29e0X2FPlhwCSiMCAXoYcGkRsPKtQhvncroPtlOWdi8Cwxh1vxm0YE01Yi600486wCigE',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: body,
       );
@@ -385,6 +281,4 @@ class _ReportState extends State<Report> {
       throw Exception(err.toString());
     }
   }
-
-
 }

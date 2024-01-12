@@ -72,7 +72,7 @@ class _MyDrawer_userState extends State<MyDrawer_user> {
             InkWell(
               onTap: () async {
                 await Future.delayed(Duration(seconds: 0));
-                Navigator.pushNamed(context, MyRoutes.dashboard);
+                Navigator.pushNamed(context, MyRoutes.dashboarduser);
               },
               child: Text(
                 "Dashboard",
@@ -93,7 +93,7 @@ class _MyDrawer_userState extends State<MyDrawer_user> {
             title: InkWell(
               onTap: () async {
                 await Future.delayed(const Duration(seconds: 0));
-                Navigator.pushNamed(context, MyRoutes.application);
+                Navigator.pushNamed(context, MyRoutes.applicationuser);
               },
 
 

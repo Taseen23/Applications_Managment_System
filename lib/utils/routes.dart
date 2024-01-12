@@ -4,6 +4,7 @@ class MyRoutes {
   static String singup = "/signup";
   static String administrator = "/administrator";
   static String application = "/application";
+  static String applicationuser = "/application_user";
   static String final_selection = "/final_selection";
   static String benificaries_admin = "/benificaries_admin";
   static String triggerpage = "/triggerpage";

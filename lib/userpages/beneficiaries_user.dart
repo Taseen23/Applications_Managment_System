@@ -167,11 +167,11 @@ class BenificariesUserState extends State<BenificariesUser> {
 
                                   return DataRow(
                                     cells: [
-                                      DataCell(Text(data['NID'])),
-                                      DataCell(Text(data['Name'])),
+                                      DataCell(Text(data['NID']?.toString()??'')),
+                                      DataCell(Text(data['Name']?.toString()??'')),
                                       //    DataCell(Text(data['Payment Mode'])),
-                                      DataCell(Text(data['Mobile No'])),
-                                      DataCell(Text(data['Account No'])),
+                                      DataCell(Text(data['Mobile No']?.toString()??'')),
+                                      DataCell(Text(data['Account No']?.toString()??'')),
                                     ],
                                   );
                                 }).toList();

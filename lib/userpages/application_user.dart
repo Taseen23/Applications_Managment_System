@@ -14,18 +14,18 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mcbp_practicum/Controller/database.dart';
 
-import 'utils/routes.dart';
+import '../utils/routes.dart';
 //import 'dart:io' as io;
 import 'dart:io';
 
-class Application extends StatefulWidget {
-  const Application({super.key});
+class ApplicationUser extends StatefulWidget {
+  const ApplicationUser({super.key});
 
   @override
-  State<Application> createState() => _ApplicationState();
+  State<ApplicationUser> createState() => _ApplicationUserState();
 }
 
-class _ApplicationState extends State<Application> {
+class _ApplicationUserState extends State<ApplicationUser> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   List<Map<String, dynamic>> pdfData=[];
   File? myImage;
@@ -38,13 +38,13 @@ class _ApplicationState extends State<Application> {
     if(pickedFile != null){
       String fileName= pickedFile.files[0].name;
       File file = File(pickedFile.files[0].path!);
-     final downloadLink = await UploadPdf(fileName, file);
+      final downloadLink = await UploadPdf(fileName, file);
 
-     _firebaseFirestore.collection("pdfs").add({
-       "name":fileName,
-       "url":downloadLink,
-     });
-     print ("pdf Uploaded Successfully");
+      _firebaseFirestore.collection("pdfs").add({
+        "name":fileName,
+        "url":downloadLink,
+      });
+      print ("pdf Uploaded Successfully");
     }
   }
   /*
@@ -722,7 +722,7 @@ class _ApplicationState extends State<Application> {
                     ),
                   ),
                 ),
-               // Text(pickedFile!.name),
+                // Text(pickedFile!.name),
                 SizedBox(
                   height: 60.0,
                 ),
@@ -746,7 +746,7 @@ class _ApplicationState extends State<Application> {
                             TextButton(onPressed: () {
                               Navigator.pushNamed(
                                 context,
-                                MyRoutes.dashboard,
+                                MyRoutes.dashboarduser,
                               );
                             }, child: Text("ok"))
                           ],

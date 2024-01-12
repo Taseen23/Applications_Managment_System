@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:mcbp_practicum/adminpages/login_screen.dart';
 import 'package:mcbp_practicum/userpages/administrator.dart';
-import 'package:mcbp_practicum/application.dart';
+import 'package:mcbp_practicum/adminpages/application.dart';
+import 'package:mcbp_practicum/userpages/application_user.dart';
 import 'package:mcbp_practicum/userpages/beneficiaries_user.dart';
 import 'package:mcbp_practicum/userpages/dashboard_screen_users.dart';
 import 'package:mcbp_practicum/adminpages/final_selection.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.dashboarduser: (Context) => DashboardScreen_user(),
         MyRoutes.drwaer_user: (Context) => MyDrawer_user(),
         MyRoutes.benifiries_user: (Context) => BenificariesUser(),
+        MyRoutes.applicationuser: (Context) => ApplicationUser(),
       },
     );
   }

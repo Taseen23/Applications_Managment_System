@@ -32,7 +32,7 @@ class _SingupScreenState extends State<SingupScreen> {
     User? user = await _auth.signUpWithEmailAndPassword(email, password);
     if (user!= null){
       print("User is successfully created");
-      Navigator.pushNamed(context, MyRoutes.lognipage);
+      Navigator.pushNamed(context, MyRoutes.triggerpage);
 
     } else {
       print("Some error happened");

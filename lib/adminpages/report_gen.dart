@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path/path.dart' as path;
+
+import '../Controller/paymentcontroller.dart';
 
 class ReportGen extends StatefulWidget {
   @override
@@ -13,53 +13,19 @@ class ReportGen extends StatefulWidget {
 }
 
 class _ReportGenState extends State<ReportGen> {
-  Future<void> generatePDF(List<Map<String, dynamic>> storeData) async {
-    final pdf = pw.Document();
+  int totalAmount = 0;
+  var obj = PaymentController();
 
-    // Load a font with better Unicode support, for example, Open Sans
-    final font = pw.Font.ttf(await rootBundle.load("assists/static/OpenSans-Light.ttf"));
+  late FirebaseFirestore _firestore;
+  late CollectionReference _usersCollection;
 
-    // Add content to the PDF using the loaded font
-    pdf.addPage(
-      pw.Page(
-        build: (context) {
-          return pw.Center(
-            child: pw.Column(
-              children: [
-                pw.Text('Store Report', style: pw.TextStyle(font: font)),
-                for (var data in storeData)
-                  pw.Text('${data['Name']}: ${data['Mobile No']}', style: pw.TextStyle(font: font)),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-
-    try {
-      // Allow the user to choose the directory
-      String? filePath = await FilePicker.platform.getDirectoryPath();
-
-      if (filePath != null) {
-        // Generate a unique file name
-        final fileName = 'store_report.pdf';
-
-        // Create the file in the chosen directory
-        final file = File(path.join(filePath, fileName));
-
-        // Save the PDF to the file
-        await file.writeAsBytes(await pdf.save());
-
-        print('PDF saved to: ${file.path}');
-      } else {
-        print('User canceled the file selection.');
-      }
-    } catch (e) {
-      print('Error generating PDF: $e');
-    }
+  void initState() {
+    super.initState();
+    _firestore = FirebaseFirestore.instance;
+    _usersCollection = _firestore.collection('Bikash');
   }
 
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -67,44 +33,108 @@ class _ReportGenState extends State<ReportGen> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Center(
-            child: Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    // Fetch data from Firebase
-                    List<Map<String, dynamic>> storeData =
-                    await fetchDataFromFirebase();
-
-                    // Generate and save the PDF
-                    await generatePDF(storeData);
-                  },
-                  child: Text('Generate Report'),
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 100.0,
+              ),
+              Text(
+                "Beneficiary List",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
                 ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Container(
+                width: 300,
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: "Enter NID",
+                    labelText: "Enter NID",
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // No need to update query here
+                    // Just display all data and calculate the totalAmount
+                    _usersCollection.get().then((querySnapshot) {
+                      if (querySnapshot.docs.isNotEmpty) {
+                        totalAmount = 0; // Reset totalAmount
+
+                        querySnapshot.docs.forEach((document) {
+                          Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+                          int amount = int.tryParse(data['Amount'] ?? '0') ?? 0;
+                          totalAmount += amount;
+                        });
+
+                        setState(() {}); // Trigger a rebuild to update the UI
+                      }
+                    });
+                  },
+                  child: Text('Display All Data'),
+                ),
+              ),
+              StreamBuilder(
+                stream: _usersCollection.snapshots(),
+                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    List<DataRow> rows = snapshot.data!.docs.map((DocumentSnapshot document) {
+                      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+
+                      return DataRow(
+                        cells: [
+                          DataCell(Text(data['NID']?.toString() ?? '')),
+                          DataCell(Text(data['Name']?.toString() ?? '')),
+                          DataCell(Text(data['Mobile No']?.toString() ?? '')),
+                          DataCell(Text(data['Amount']?.toString() ?? '')),
+                        ],
+                      );
+                    }).toList();
+
+                    return DataTable(
+                      columns: [
+                        DataColumn(label: Text('NID')),
+                        DataColumn(label: Text('Name')),
+                        DataColumn(label: Text('Mobile No')),
+                        DataColumn(label: Text('Amount')),
+                      ],
+                      rows: rows,
+                      columnSpacing: 12.0,
+                    );
+                  }
+                },
+              ),
+              if (totalAmount != 0) // Display total amount only if it's not zero
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Total Amount: $totalAmount',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+            ],
           ),
         ),
       ),
     );
-  }
-
-  Future<List<Map<String, dynamic>>> fetchDataFromFirebase() async {
-    // Assuming you have a collection named "Accept" in Firestore
-    CollectionReference<Map<String, dynamic>> collection =
-    FirebaseFirestore.instance.collection('Accept');
-
-    // Fetch documents from the collection
-    QuerySnapshot<Map<String, dynamic>> querySnapshot =
-    await collection.get();
-
-    // Extract data from documents
-    List<Map<String, dynamic>> storeData = [];
-    querySnapshot.docs.forEach((doc) {
-      storeData.add(doc.data());
-    });
-
-    return storeData;
   }
 }
