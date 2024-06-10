@@ -70,19 +70,18 @@ class _ReportGenState extends State<ReportGen> {
                 alignment: Alignment.center,
                 child: ElevatedButton(
                   onPressed: () {
-                    // No need to update query here
-                    // Just display all data and calculate the totalAmount
                     _usersCollection.get().then((querySnapshot) {
                       if (querySnapshot.docs.isNotEmpty) {
                         totalAmount = 0; // Reset totalAmount
 
                         querySnapshot.docs.forEach((document) {
-                          Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+                          Map<String, dynamic> data =
+                              document.data() as Map<String, dynamic>;
                           int amount = int.tryParse(data['Amount'] ?? '0') ?? 0;
                           totalAmount += amount;
                         });
 
-                        setState(() {}); // Trigger a rebuild to update the UI
+                        setState(() {});
                       }
                     });
                   },
@@ -97,8 +96,10 @@ class _ReportGenState extends State<ReportGen> {
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
-                    List<DataRow> rows = snapshot.data!.docs.map((DocumentSnapshot document) {
-                      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+                    List<DataRow> rows =
+                        snapshot.data!.docs.map((DocumentSnapshot document) {
+                      Map<String, dynamic> data =
+                          document.data() as Map<String, dynamic>;
 
                       return DataRow(
                         cells: [
@@ -123,7 +124,7 @@ class _ReportGenState extends State<ReportGen> {
                   }
                 },
               ),
-              if (totalAmount != 0) // Display total amount only if it's not zero
+              if (totalAmount != 0)
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(

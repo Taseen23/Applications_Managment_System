@@ -16,7 +16,8 @@ class _ReportState extends State<Report> {
 
   var obj = PaymentController();
   TextEditingController _nidController = TextEditingController();
-  TextEditingController _amountController = TextEditingController(); // New controller for "Amount"
+  TextEditingController _amountController =
+      TextEditingController(); // New controller for "Amount"
 
   Query? _query;
 
@@ -36,7 +37,9 @@ class _ReportState extends State<Report> {
 
   void _updateQuery() {
     setState(() {
-      _query = _usersCollection.where('NID', isEqualTo: _nidController.text).limit(1);
+      _query = _usersCollection
+          .where('NID', isEqualTo: _nidController.text)
+          .limit(1);
     });
   }
 
@@ -44,7 +47,8 @@ class _ReportState extends State<Report> {
     if (_query != null) {
       _query!.get().then((querySnapshot) {
         if (querySnapshot.docs.isNotEmpty) {
-          Map<String, dynamic> data = querySnapshot.docs.first.data() as Map<String, dynamic>;
+          Map<String, dynamic> data =
+              querySnapshot.docs.first.data() as Map<String, dynamic>;
 
           String amount = _amountController.text; // Get the "Amount" value
 
@@ -68,6 +72,7 @@ class _ReportState extends State<Report> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 132, 170, 201),
         title: Text("MCBP"),
         centerTitle: true,
       ),
@@ -88,7 +93,8 @@ class _ReportState extends State<Report> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 32.0, vertical: 16.0),
                 ),
                 SizedBox(
                   height: 30.0,
@@ -131,15 +137,19 @@ class _ReportState extends State<Report> {
                       } else if (snapshot.hasError) {
                         return Text('Error: ${snapshot.error}');
                       } else {
-                        List<DataRow> rows = snapshot.data!.docs.map((DocumentSnapshot document) {
-                          Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+                        List<DataRow> rows = snapshot.data!.docs
+                            .map((DocumentSnapshot document) {
+                          Map<String, dynamic> data =
+                              document.data() as Map<String, dynamic>;
 
                           return DataRow(
                             cells: [
                               DataCell(Text(data['NID']?.toString() ?? '')),
                               DataCell(Text(data['Name']?.toString() ?? '')),
-                              DataCell(Text(data['Mobile No']?.toString() ?? '')),
-                              DataCell(Text(data['Account No']?.toString() ?? '')),
+                              DataCell(
+                                  Text(data['Mobile No']?.toString() ?? '')),
+                              DataCell(
+                                  Text(data['Account No']?.toString() ?? '')),
                             ],
                           );
                         }).toList();
@@ -169,7 +179,8 @@ class _ReportState extends State<Report> {
                             selectedOption = newValue!;
                           });
                         },
-                        items: <String>['Bikash', 'Nagad'].map<DropdownMenuItem<String>>((String value) {
+                        items: <String>['Bikash', 'Nagad']
+                            .map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
@@ -261,7 +272,8 @@ class _ReportState extends State<Report> {
     }
   }
 
-  Future<Map<String, dynamic>> createPaymentIntent(String amount, String currency) async {
+  Future<Map<String, dynamic>> createPaymentIntent(
+      String amount, String currency) async {
     try {
       Map<String, dynamic> body = {
         'amount': amount,
@@ -271,7 +283,8 @@ class _ReportState extends State<Report> {
       var response = await http.post(
         Uri.parse('https://api.stripe.com/v1/payment_intents'),
         headers: {
-          'Authorization': 'Bearer sk_test_51OTKxSJqHrW7Yr6bwZzOI4WxgZlGM29e0X2FPlhwCSiMCAXoYcGkRsPKtQhvncroPtlOWdi8Cwxh1vxm0YE01Yi600486wCigE',
+          'Authorization':
+              'Bearer sk_test_51OTKxSJqHrW7Yr6bwZzOI4WxgZlGM29e0X2FPlhwCSiMCAXoYcGkRsPKtQhvncroPtlOWdi8Cwxh1vxm0YE01Yi600486wCigE',
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: body,

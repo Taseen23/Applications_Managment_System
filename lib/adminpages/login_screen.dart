@@ -12,7 +12,6 @@ class LoginScreen extends StatefulWidget {
 class LoginPageState extends State<LoginScreen> {
   final FirebaseAuthService _auth = FirebaseAuthService();
 
-  // TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -65,14 +64,6 @@ class LoginPageState extends State<LoginScreen> {
             child: Column(
               children: [
                 TextFormField(
-                    /*
-                onChanged: (value) {
-                  setState(() {
-                    email = value;
-                  });
-                },
-
-                 */
                     controller: _emailController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.person),
@@ -89,24 +80,13 @@ class LoginPageState extends State<LoginScreen> {
                   height: 20.0,
                 ),
                 TextFormField(
-                    /*
-                  onChanged: (value) {
-                    setState(() {
-                      password = value;
-                    });
-                  },
-
-                 */
-
                     obscureText: true,
                     controller: _passwordController,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.password),
-                      hintText: "Enter Password",
-                      labelText: "Password",
-                      suffixIcon: Icon(Icons.remove_red_eye_outlined)
-
-                    ),
+                        icon: Icon(Icons.password),
+                        hintText: "Enter Password",
+                        labelText: "Password",
+                        suffixIcon: Icon(Icons.remove_red_eye_outlined)),
                     validator: (value) {
                       if (value == null) {
                         return 'Please Enter Correct Passwoord';
@@ -116,9 +96,8 @@ class LoginPageState extends State<LoginScreen> {
                 SizedBox(
                   height: 20.0,
                 ),
-                ElevatedButton(
-                  //onPressed: DashboardScreen(),
-                  onPressed: signin,
+                InkWell(
+                  onTap: () => signin(),
                   child: AnimatedContainer(
                     duration: Duration(seconds: 1),
                     width: 80,

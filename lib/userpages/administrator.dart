@@ -13,44 +13,52 @@ class Admin extends StatefulWidget {
 }
 
 class _AdminState extends State<Admin> {
+  late String father, mother, nid;
+  // late String selectedOption;
 
-  late String father,mother,nid;
- // late String selectedOption;
-
-
-  final List<String> options = ['LMA', 'MCBP', 'অন্যান্য', ];
-  final List<String> options1 = ['ব্যবহারকারীর ধরণ','মন্ত্রণালয়', 'পরিচালক দপ্তর', 'অন্যান্য', ];
-  final List<String> options2 = ['সক্রিয়','নিসক্রিয়', 'পাসওয়ার্ড', ];
-  final List<String> options3 = ['এডমিন', ];
+  final List<String> options = [
+    'LMA',
+    'MCBP',
+    'অন্যান্য',
+  ];
+  final List<String> options1 = [
+    'ব্যবহারকারীর ধরণ',
+    'মন্ত্রণালয়',
+    'পরিচালক দপ্তর',
+    'অন্যান্য',
+  ];
+  final List<String> options2 = [
+    'সক্রিয়',
+    'নিসক্রিয়',
+    'পাসওয়ার্ড',
+  ];
+  final List<String> options3 = [
+    'এডমিন',
+  ];
 
   TextEditingController textEditingController = TextEditingController();
-  searchApplicant(String name)async{
-    QuerySnapshot querySnapshot= await DatabaseMetgods().getapplicantInfo(name);
-    nid="${querySnapshot.docs[0]["NID"]}";
-    father="${querySnapshot.docs[0]["Father Name"]}";
-    mother="${querySnapshot.docs[0]["Mother Name"]}";
-    setState(() {
-
-    });
-
+  searchApplicant(String name) async {
+    QuerySnapshot querySnapshot =
+        await DatabaseMetgods().getapplicantInfo(name);
+    nid = "${querySnapshot.docs[0]["NID"]}";
+    father = "${querySnapshot.docs[0]["Father Name"]}";
+    mother = "${querySnapshot.docs[0]["Mother Name"]}";
+    setState(() {});
   }
-  
-  
+
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 132, 170, 201),
           title: Text(
             "MCBP",
           ),
           centerTitle: true,
         ),
-      body:
-      SingleChildScrollView(
-          child: Container(
-            /*
+        body: SingleChildScrollView(
+            child: Container(
+                /*
               decoration: BoxDecoration(
                 /*
                   gradient: LinearGradient(
@@ -67,48 +75,42 @@ class _AdminState extends State<Admin> {
               ),
 
              */
-          child: Center(
-              child:
-
-
-              Column(
-                  children: [
-                    SizedBox(
-                      height: 100.0,
-                    ),
-
-                    Text(
-                      "List Of Users",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    SizedBox(
-                      width: 300,
-                      child: TextFormField
-                      //Padding(padding: Size.fromWidth(20), Size.fromHeight(30),
-                        (
-                         // controller: _firstnameController,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(12)
-                          ),
-                          hintText: "NID",
-                          labelText: "NID",
-                        ),
-                      ),
-                    ),
-                    /*
+                child: Center(
+                    child: Column(children: [
+          SizedBox(
+            height: 100.0,
+          ),
+          Text(
+            "List Of Users",
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+          ),
+          SizedBox(
+            height: 20.0,
+          ),
+          SizedBox(
+            width: 300,
+            child: TextFormField
+                //Padding(padding: Size.fromWidth(20), Size.fromHeight(30),
+                (
+              // controller: _firstnameController,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12)),
+                hintText: "NID",
+                labelText: "NID",
+              ),
+            ),
+          ),
+          /*
                     SizedBox(
                       height: 20.0,
                     ),
@@ -253,15 +255,14 @@ class _AdminState extends State<Admin> {
                       ),
                     ),
                     */
-                    SizedBox(
-                      height: 200.0,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-
-                      child: ElevatedButton(
-                        onPressed: () {
-                          searchApplicant(textEditingController.text);
+          SizedBox(
+            height: 200.0,
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: ElevatedButton(
+              onPressed: () {
+                searchApplicant(textEditingController.text);
 
 /*
                           Navigator.pushNamed(
@@ -269,27 +270,15 @@ class _AdminState extends State<Admin> {
                             MyRoutes.lognipage,
                           );
                           */
-                        }  ,
-                        child:Text('খুঁজুন'),
+              },
+              child: Text('খুঁজুন'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xffd97348),
 
-
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xffd97348),
-
-                          //Color(0xffeb6f1c),
-
-                        ),
-
-                      ),
-                    ),
-                  ]
-              )
-          )
-      )
-      )
-
-
-
-    );
+                //Color(0xffeb6f1c),
+              ),
+            ),
+          ),
+        ])))));
   }
 }
