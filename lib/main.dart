@@ -9,6 +9,9 @@ import 'adminpages/adminpages.dart';
 import 'triggerpage.dart';
 import 'userpages/userpages.dart';
 
+var kColorScheme =
+    ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 96, 59, 181));
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -31,7 +34,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: const MaterialTheme(TextTheme()).light(),
+      theme: ThemeData().copyWith(
+          colorScheme: kColorScheme,
+          appBarTheme:
+              AppBarTheme().copyWith(backgroundColor: kColorScheme.onPrimary),
+          scaffoldBackgroundColor: kColorScheme.background,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateColor.resolveWith(
+                      (states) => Color.fromARGB(255, 66, 90, 168))))),
+      //const MaterialTheme(TextTheme()).light(),
       darkTheme: const MaterialTheme(TextTheme()).dark(),
       debugShowCheckedModeBanner: false,
       home: triggerScreen(),

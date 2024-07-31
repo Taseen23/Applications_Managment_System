@@ -70,6 +70,7 @@ class _ReportState extends State<Report> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 132, 170, 201),
@@ -169,72 +170,95 @@ class _ReportState extends State<Report> {
                   ),
                 Container(
                   alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      Text('Payment Mode:'),
-                      DropdownButton<String>(
-                        value: selectedOption,
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedOption = newValue!;
-                          });
-                        },
-                        items: <String>['Bikash', 'Nagad']
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                      SizedBox(
-                        width: 300,
-                        child: TextFormField(
-                          controller: _amountController,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(12),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Payment Mode:',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                              // style: TextStyle(color: theme.onSecondary),
                             ),
-                            hintText: "Enter Amount",
-                            labelText: "Amount",
+                            SizedBox(
+                              width: 16,
+                            ),
+                            Row(
+                              children: [
+                                DropdownButton<String>(
+                                  value: selectedOption,
+                                  onChanged: (String? newValue) {
+                                    setState(() {
+                                      selectedOption = newValue!;
+                                    });
+                                  },
+                                  items: <String>['Bikash', 'Nagad']
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        //Text('Payment Mode:'),
+
+                        SizedBox(
+                          width: 300,
+                          child: TextFormField(
+                            controller: _amountController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText: "Enter Amount",
+                                label: Text(
+                                  'Amount',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          _storeDataAndSubmit();
-                          makePayment();
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: Text("Initiate Payment Successfully"),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.pushNamed(
-                                        context,
-                                        MyRoutes.dashboard,
-                                      );
-                                    },
-                                    child: Text("OK"),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                        child: Text("Please Pay"),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xffd97348),
+                        SizedBox(
+                          height: 10.0,
                         ),
-                      ),
-                    ],
+                        ElevatedButton(
+                          onPressed: () {
+                            _storeDataAndSubmit();
+                            makePayment();
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text("Initiate Payment Successfully"),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          MyRoutes.dashboard,
+                                        );
+                                      },
+                                      child: Text("OK"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          child: Text("Please Pay"),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xffd97348),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
